@@ -1,6 +1,7 @@
 extends Personatge
 
 onready var espasa: Node2D = get_node("Espasa")
+onready var espasa_anim_player: AnimationPlayer = espasa.get_node("Espasa_AnimationPlayer")
 
 
 func _process(_delta: float) -> void:
@@ -16,6 +17,8 @@ func _process(_delta: float) -> void:
 		espasa.scale.y = -1
 	elif espasa.scale.y == -1 and mouse_direction.x > 0:
 		espasa.scale.y = 1
+	if Input.is_action_just_pressed("ui_attack") and not espasa_anim_player.is_playing():
+		espasa_anim_player.play("attack")
 
 func get_input() -> void:
 	direccio = Vector2.ZERO
