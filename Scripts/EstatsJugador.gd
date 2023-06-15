@@ -8,24 +8,22 @@ func _init() -> void:
 	
 func _ready() -> void:
 	set_state(estats.Idle)
-	
-	
+
+
 func _state_logic(_delta: float) -> void:
 	pare.get_input()
 	pare.moure()
-	
-	
-func _get_transition() -> int:	
+
+func _get_transition() -> int:
 	match estat:
 		estats.Idle:
-			if pare.velocitat.length() > 10:
+			if pare.direccio != Vector2.ZERO:
 				return estats.Move
 		estats.Move:
-			if pare.velocitat.length() < 10:
+			if pare.direccio == Vector2.ZERO:
 				return estats.Idle
 	return -1
-	
-	
+
 func _enter_state(_previous_state: int, new_state: int) -> void:
 	match new_state:
 		estats.Idle:
