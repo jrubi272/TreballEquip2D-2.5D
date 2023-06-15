@@ -8,6 +8,10 @@
 [ext_resource path="res://textures/slash_effect_anim_spritesheet.png" type="Texture" id=6]
 [ext_resource path="res://textures/player/player_move.png" type="Texture" id=7]
 
+[sub_resource type="CapsuleShape2D" id=17]
+radius = 8.0
+height = 6.0
+
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 48, 43 )
@@ -142,10 +146,6 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=17]
-radius = 9.0
-height = 6.0
-
 [sub_resource type="Animation" id=19]
 length = 0.001
 tracks/0/type = "value"
@@ -256,23 +256,23 @@ script = ExtResource( 3 )
 [node name="Estats" parent="." index="0"]
 script = ExtResource( 4 )
 
-[node name="AnimatedSprite" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0, 1 )
+shape = SubResource( 17 )
+
+[node name="AnimatedSprite" parent="." index="2"]
 frames = SubResource( 32 )
 animation = "Idle"
 
-[node name="AnimationPlayer" parent="." index="2"]
+[node name="AnimationPlayer" parent="." index="3"]
 anims/Idle = SubResource( 33 )
 anims/Move = SubResource( 34 )
 anims/RESET = SubResource( 35 )
 
-[node name="CollisionShape2D" parent="." index="3"]
-position = Vector2( 0, 9 )
-shape = SubResource( 17 )
-
 [node name="Espasa" type="Node2D" parent="." index="4"]
 
 [node name="Node2D" type="Node2D" parent="Espasa" index="0"]
-position = Vector2( 0, 6 )
+position = Vector2( 0, -3 )
 rotation = 4.71239
 
 [node name="Sprite" type="Sprite" parent="Espasa/Node2D" index="0"]
@@ -287,7 +287,7 @@ anims/RESET = SubResource( 19 )
 anims/attack = SubResource( 18 )
 
 [node name="Slash" type="Sprite" parent="Espasa" index="2"]
-position = Vector2( 33, 9 )
+position = Vector2( 30, -9.53674e-07 )
 scale = Vector2( 1.47648, 1.47648 )
 texture = ExtResource( 6 )
 hframes = 3

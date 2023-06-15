@@ -45,15 +45,17 @@ _global_script_class_icons={
 [application]
 
 config/name="TreballEquip_Manuel_Lara_Jaume_Rubí"
-run/main_scene="res://Scenes/Escenari.tscn"
+run/main_scene="res://Scenes/Joc.tscn"
 config/icon="res://icon.png"
 
 [display]
 
 window/size/width=480
 window/size/height=270
-window/size/test_width=640
-window/size/test_height=480
+window/size/test_width=1280
+window/size/test_height=720
+mouse_cursor/custom_image="res://textures/crosshair_2_big.png"
+window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [gui]
