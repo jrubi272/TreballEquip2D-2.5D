@@ -4,6 +4,8 @@ onready var espasa: Node2D = get_node("Espasa")
 onready var espasa_anim_player: AnimationPlayer = espasa.get_node("Espasa_AnimationPlayer")
 var algo = 0
 
+
+
 func _process(_delta: float) -> void:
 	var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
 	
@@ -40,3 +42,7 @@ func get_input() -> void:
 		print(direccio)
 	algo += 1
 	print(algo)
+
+
+func _on_P_Jugador_ready():
+	$Espasa/Slash.visible = false

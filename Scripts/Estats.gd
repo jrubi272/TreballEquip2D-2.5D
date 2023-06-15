@@ -12,7 +12,7 @@ onready var anim_player: AnimationPlayer = pare.get_node("AnimationPlayer")
 func _physics_process(delta: float) -> void:
 	if estat != -1:
 		_state_logic(delta)
-		var transicio: int = _get_transicio()
+		var transicio: int = _get_transition()
 		if transicio != -1:
 			set_state(transicio)
 
@@ -21,7 +21,7 @@ func _state_logic(_delta: float) -> void:
 	pass
 	
 	
-func _get_transicio() -> int:
+func _get_transition() -> int:
 	return -1
 
 
