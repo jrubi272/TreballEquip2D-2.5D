@@ -19,7 +19,6 @@ func _physics_process(delta: float) -> void:
 	velocitat = lerp(velocitat, Vector2.ZERO, FRICTION)#per a disminuir gradualment la velocitat del personatge
 
 func moure():
-	print("mou")
 	direccio = direccio.normalized()
 	velocitat += direccio * accel
 	velocitat = velocitat.clamped(max_vel) #per a limitar la velocitat del personatge

@@ -2,7 +2,6 @@ extends Personatge
 
 onready var espasa: Node2D = get_node("Espasa")
 onready var espasa_anim_player: AnimationPlayer = espasa.get_node("Espasa_AnimationPlayer")
-var algo = 0
 
 
 
@@ -26,22 +25,12 @@ func get_input() -> void:
 	direccio = Vector2.ZERO
 	if Input.is_action_pressed("ui_down"):
 		direccio += Vector2.DOWN
-		print("d")
-		print(direccio)
 	if Input.is_action_pressed("ui_left"):
 		direccio += Vector2.LEFT
-		print("l")
-		print(direccio)
 	if Input.is_action_pressed("ui_right"):
 		direccio += Vector2.RIGHT
-		print("r")
-		print(direccio)
 	if Input.is_action_pressed("ui_up"):
 		direccio += Vector2.UP
-		print("u")
-		print(direccio)
-	algo += 1
-	print(algo)
 
 
 func _on_P_Jugador_ready():
