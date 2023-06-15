@@ -9,19 +9,37 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "Enemic",
+"language": "GDScript",
+"path": "res://Scripts/Enemic.gd"
+}, {
 "base": "Node",
 "class": "Estats",
 "language": "GDScript",
 "path": "res://Scripts/Estats.gd"
 }, {
+"base": "Enemic",
+"class": "Mag",
+"language": "GDScript",
+"path": "res://Scenes/Mag.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Personatge",
 "language": "GDScript",
 "path": "res://Scripts/Personatge.gd"
+}, {
+"base": "Area2D",
+"class": "Projectil",
+"language": "GDScript",
+"path": "res://Projectil.gd"
 } ]
 _global_script_class_icons={
+"Enemic": "",
 "Estats": "",
-"Personatge": ""
+"Mag": "",
+"Personatge": "",
+"Projectil": ""
 }
 
 [application]

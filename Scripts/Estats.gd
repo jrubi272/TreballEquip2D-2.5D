@@ -1,5 +1,4 @@
-extends Node
-class_name Estats
+class_name Estats extends Node
 
 var estats: Dictionary = {}
 var estat_anterior: int = -1
