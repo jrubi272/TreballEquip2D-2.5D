@@ -1,34 +1,38 @@
 extends Personatge
 
+onready var espasa: Node2D = get_node("Espasa")
+
 
 func _process(_delta: float) -> void:
 	var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
 	
-	if mouse_direction.x > 0 and animated_sprite.flip_h:
-		animated_sprite.flip_h = false
-	elif mouse_direction.x < 0 and not animated_sprite.flip_h:
-		animated_sprite.flip_h = true
-		
-	current_weapon.move(mouse_direction)
-		
-		
+	if mouse_direction.x > 0 and anim_sprite.flip_h:
+		anim_sprite.flip_h = false
+	elif mouse_direction.x < 0 and not anim_sprite.flip_h:
+		anim_sprite.flip_h = true
+	
+	espasa.rotation = mouse_direction.angle()
+	if espasa.scale.y == 1 and mouse_direction.x < 0:
+		espasa.scale.y = -1
+	elif espasa.scale.y == -1 and mouse_direction.x > 0:
+		espasa.scale.y = 1
+
 func get_input() -> void:
-	mov_direction = Vector2.ZERO
+	direccio = Vector2.ZERO
 	if Input.is_action_pressed("ui_down"):
-		mov_direction += Vector2.DOWN
+		direccio += Vector2.DOWN
+		print("d")
+		print(direccio)
 	if Input.is_action_pressed("ui_left"):
-		mov_direction += Vector2.LEFT
+		direccio += Vector2.LEFT
+		print("l")
+		print(direccio)
 	if Input.is_action_pressed("ui_right"):
-		mov_direction += Vector2.RIGHT
+		direccio += Vector2.RIGHT
+		print("r")
+		print(direccio)
 	if Input.is_action_pressed("ui_up"):
-		mov_direction += Vector2.UP
-		
-	if not current_weapon.is_busy():
-		if Input.is_action_just_released("ui_previous_weapon"):
-			_switch_weapon(UP)
-		elif Input.is_action_just_released("ui_next_weapon"):
-			_switch_weapon(DOWN)
-		elif Input.is_action_just_pressed("ui_throw") and current_weapon.get_index() != 0:
-			_drop_weapon()
-		
-	current_weapon.get_input()
+		direccio += Vector2.UP
+		print("u")
+		print(direccio)
+

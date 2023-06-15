@@ -9,22 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Estats",
+"language": "GDScript",
+"path": "res://Scripts/Estats.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Personatge",
 "language": "GDScript",
 "path": "res://Scripts/Personatge.gd"
 } ]
 _global_script_class_icons={
+"Estats": "",
 "Personatge": ""
 }
 
 [application]
 
 config/name="TreballEquip_Manuel_Lara_Jaume_Rubí"
+run/main_scene="res://Scenes/Escenari.tscn"
 config/icon="res://icon.png"
 
 [display]
 
+window/size/width=480
+window/size/height=270
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/aspect="keep"
@@ -32,6 +41,20 @@ window/stretch/aspect="keep"
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+ui_attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Mon"
+2d_physics/layer_2="Jugador"
+2d_physics/layer_3="Enemics"
 
 [physics]
 

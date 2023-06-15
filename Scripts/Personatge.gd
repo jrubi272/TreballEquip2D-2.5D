@@ -11,6 +11,7 @@ export(int) var max_vel:= 100
 #Variables/Atributs
 var direccio: Vector2 = Vector2.ZERO
 var velocitat: Vector2 = Vector2.ZERO
+onready var anim_sprite: AnimatedSprite = get_node("AnimatedSprite")
 
 func _physics_process(delta: float) -> void:
 	velocitat = move_and_slide(velocitat)
