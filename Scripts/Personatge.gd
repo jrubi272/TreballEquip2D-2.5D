@@ -26,4 +26,3 @@ func moure():
  
 func sumar_vides(nVides, direccio):
 	pass
-
