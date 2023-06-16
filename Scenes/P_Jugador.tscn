@@ -8,6 +8,71 @@
 [ext_resource path="res://textures/slash_effect_anim_spritesheet.png" type="Texture" id=6]
 [ext_resource path="res://textures/player/player_move.png" type="Texture" id=7]
 
+[sub_resource type="CapsuleShape2D" id=17]
+radius = 6.96967
+height = 0.0
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 48, 43 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 48, 43 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 48, 43 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 2 )
+region = Rect2( 144, 0, 48, 43 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 48, 43 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 2 )
+region = Rect2( 240, 0, 48, 43 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 48, 44 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 7 )
+region = Rect2( 48, 0, 48, 44 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 7 )
+region = Rect2( 96, 0, 48, 44 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 7 )
+region = Rect2( 144, 0, 48, 44 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 7 )
+region = Rect2( 192, 0, 48, 44 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 7 )
+region = Rect2( 240, 0, 48, 44 )
+
+[sub_resource type="SpriteFrames" id=32]
+animations = [ {
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
+"loop": true,
+"name": "Move",
+"speed": 5.0
+} ]
+
 [sub_resource type="Animation" id=33]
 resource_name = "Idle"
 length = 0.6
@@ -80,71 +145,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0 ]
 }
-
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 48, 43 )
-
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 0, 48, 43 )
-
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 2 )
-region = Rect2( 96, 0, 48, 43 )
-
-[sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 2 )
-region = Rect2( 144, 0, 48, 43 )
-
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 2 )
-region = Rect2( 192, 0, 48, 43 )
-
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 2 )
-region = Rect2( 240, 0, 48, 43 )
-
-[sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 48, 44 )
-
-[sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 7 )
-region = Rect2( 48, 0, 48, 44 )
-
-[sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 7 )
-region = Rect2( 96, 0, 48, 44 )
-
-[sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 7 )
-region = Rect2( 144, 0, 48, 44 )
-
-[sub_resource type="AtlasTexture" id=30]
-atlas = ExtResource( 7 )
-region = Rect2( 192, 0, 48, 44 )
-
-[sub_resource type="AtlasTexture" id=31]
-atlas = ExtResource( 7 )
-region = Rect2( 240, 0, 48, 44 )
-
-[sub_resource type="SpriteFrames" id=32]
-animations = [ {
-"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
-"loop": true,
-"name": "Move",
-"speed": 5.0
-} ]
-
-[sub_resource type="CapsuleShape2D" id=17]
-radius = 6.96967
-height = 0.0
 
 [sub_resource type="Animation" id=19]
 length = 0.001
@@ -257,19 +257,19 @@ script = ExtResource( 3 )
 [node name="Estats" parent="." index="0"]
 script = ExtResource( 4 )
 
-[node name="AnimationPlayer" parent="." index="1"]
-anims/Idle = SubResource( 33 )
-anims/Move = SubResource( 34 )
-anims/RESET = SubResource( 35 )
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0, 2.987 )
+scale = Vector2( 0.840693, 1.00602 )
+shape = SubResource( 17 )
 
 [node name="AnimatedSprite" parent="." index="2"]
 frames = SubResource( 32 )
 animation = "Idle"
 
-[node name="CollisionShape2D" parent="." index="3"]
-position = Vector2( 0, 2.987 )
-scale = Vector2( 0.840693, 1.00602 )
-shape = SubResource( 17 )
+[node name="AnimationPlayer" parent="." index="3"]
+anims/Idle = SubResource( 33 )
+anims/Move = SubResource( 34 )
+anims/RESET = SubResource( 35 )
 
 [node name="Espasa" type="Node2D" parent="." index="4"]
 
@@ -293,5 +293,12 @@ position = Vector2( 30, -9.53674e-07 )
 scale = Vector2( 1.47648, 1.47648 )
 texture = ExtResource( 6 )
 hframes = 3
+
+[node name="Camera2D" type="Camera2D" parent="." index="5"]
+current = true
+limit_left = -100
+limit_top = 50
+limit_right = 555
+limit_bottom = 350
 
 [connection signal="ready" from="." to="." method="_on_P_Jugador_ready"]
