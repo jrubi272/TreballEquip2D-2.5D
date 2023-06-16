@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Escenari.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Ogre.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Joc.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Mag.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/P_Jugador.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=6]
 
 [node name="Joc" type="Node2D"]
 script = ExtResource( 3 )
@@ -40,16 +42,21 @@ tile_data = PoolIntArray( 65543, 10, 0, 65544, 11, 0, 65545, 12, 0, 131079, 8, 0
 
 [node name="P_Jugador" parent="." instance=ExtResource( 5 )]
 light_mask = 2
-position = Vector2( 448, 89 )
+position = Vector2( 235, 178 )
 
 [node name="Camera2D" parent="P_Jugador" index="5"]
 limit_top = -25
 
 [node name="Mag" parent="." instance=ExtResource( 4 )]
-position = Vector2( 185, 188 )
+position = Vector2( 166, 178 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="Ogre" parent="." instance=ExtResource( 2 )]
+position = Vector2( 196, 208 )
+
+[node name="HUD" parent="." instance=ExtResource( 6 )]
 
 [connection signal="ready" from="." to="." method="_on_Joc_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

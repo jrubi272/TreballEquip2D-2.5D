@@ -100,6 +100,7 @@ frame = 9
 
 [node name="AnimatedSprite" parent="." index="2"]
 visible = false
+z_index = 1
 
 [node name="CollisionShape2D" parent="." index="3"]
 position = Vector2( 0.5, -1.5 )
