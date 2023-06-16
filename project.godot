@@ -22,12 +22,12 @@ _global_script_classes=[ {
 "base": "Estats",
 "class": "EstatsMag",
 "language": "GDScript",
-"path": "res://Scenes/EstatsMag.gd"
+"path": "res://Scripts/EstatsMag.gd"
 }, {
 "base": "Enemic",
 "class": "Mag",
 "language": "GDScript",
-"path": "res://Scenes/Mag.gd"
+"path": "res://Scripts/Mag.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Personatge",
