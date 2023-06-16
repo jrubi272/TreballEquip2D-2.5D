@@ -55,6 +55,9 @@ frame = 1
 position = Vector2( 2, 4 )
 shape = SubResource( 1 )
 
+[node name="AnimatedSprite" parent="." index="3"]
+visible = false
+
 [node name="AnimationPlayer" parent="." index="4"]
 anims/Caminar = SubResource( 2 )
 anims/RESET = SubResource( 3 )
@@ -66,3 +69,5 @@ anims/RESET = SubResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2( 2, 4 )
 shape = SubResource( 4 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

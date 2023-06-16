@@ -33,6 +33,7 @@ func _on_Projectil_area_entered(area):
 
 
 func _on_Projectil_body_entered(body):
-	if not body in potDisparar:
+	if body.has_method("sumar_vides"):
 		body.sumar_vides(-1, Vector2.ZERO)
+	else:
 		queue_free()
