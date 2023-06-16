@@ -1,18 +1,11 @@
-extends Estats
+class_name EstatsMag extends Estats
 
 
-func _init() -> void:
-	_add_state("Idle")
-	_add_state("Atacar")
-	_add_state("Caminar")
+func _init():
+	afegir_estat("idle")
+	afegir_estat("caminar")
+	afegir_estat("atacar")
 	
-func _ready() -> void:
-	set_state(estats.move)
-
-func comportament_estats(delta) -> void:
-	if estat == estats.move:
-		pare.chase()
-		pare.move()
-		
-func transicions(): 
-	pass
+func _ready():
+	colocar_estat(estats.caminar)
+	
