@@ -19,12 +19,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Estats.gd"
 }, {
-"base": "Estats",
+"base": "Reference",
 "class": "EstatsMag",
 "language": "GDScript",
 "path": "res://Scenes/EstatsMag.gd"
 }, {
-"base": "Reference",
+"base": "Enemic",
 "class": "Mag",
 "language": "GDScript",
 "path": "res://Scripts/Mag.gd"
@@ -34,7 +34,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Personatge.gd"
 }, {
-"base": "Reference",
+"base": "Area2D",
 "class": "Projectil",
 "language": "GDScript",
 "path": "res://Scripts/Projectil.gd"
