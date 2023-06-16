@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TX Props.png-139ebab353f415bff285bc240e704c1d.stex"
+path="res://.import/TX - PlayerDavant.png-9b469abf529bbed5f2a94cfa18fb6bed.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/TX Props.png"
-dest_files=[ "res://.import/TX Props.png-139ebab353f415bff285bc240e704c1d.stex" ]
+source_file="res://textures/TX - PlayerDavant.png"
+dest_files=[ "res://.import/TX - PlayerDavant.png-9b469abf529bbed5f2a94cfa18fb6bed.stex" ]
 
 [params]
 

@@ -267,8 +267,8 @@ frames = SubResource( 32 )
 animation = "Idle"
 
 [node name="CollisionShape2D" parent="." index="3"]
-position = Vector2( 0, 0.995666 )
-scale = Vector2( 0.840693, 1.452 )
+position = Vector2( 0, 2.987 )
+scale = Vector2( 0.840693, 1.00602 )
 shape = SubResource( 17 )
 
 [node name="Espasa" type="Node2D" parent="." index="4"]
