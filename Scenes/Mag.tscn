@@ -112,18 +112,16 @@ wait_time = 0.2
 wait_time = 1.5
 one_shot = true
 
-[node name="RayCast2D" type="RayCast2D" parent="." index="6"]
-
-[node name="AnimationPlayer" parent="." index="7"]
+[node name="AnimationPlayer" parent="." index="6"]
 autoplay = "Idle"
 anims/Atacar = SubResource( 5 )
 anims/Caminar = SubResource( 6 )
 anims/Idle = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 
-[node name="TimerCami" type="Timer" parent="." index="8"]
+[node name="TimerCami" type="Timer" parent="." index="7"]
 
-[node name="AnimAtacar" type="Timer" parent="." index="9"]
+[node name="AnimAtacar" type="Timer" parent="." index="8"]
 
 [connection signal="timeout" from="TimerAtac" to="." method="_on_TimerAtac_timeout"]
 [connection signal="timeout" from="TimerCami" to="." method="_on_TimerCami_timeout"]

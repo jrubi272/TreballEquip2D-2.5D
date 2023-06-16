@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://Scripts/Mag.gd"
 }, {
 "base": "KinematicBody2D",
+"class": "Ogre",
+"language": "GDScript",
+"path": "res://Scripts/Ogre.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "Personatge",
 "language": "GDScript",
 "path": "res://Scripts/Personatge.gd"
@@ -37,13 +42,14 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Projectil",
 "language": "GDScript",
-"path": "res://Projectil.gd"
+"path": "res://Scripts/Projectil.gd"
 } ]
 _global_script_class_icons={
 "Enemic": "",
 "Estats": "",
 "EstatsMag": "",
 "Mag": "",
+"Ogre": "",
 "Personatge": "",
 "Projectil": ""
 }
