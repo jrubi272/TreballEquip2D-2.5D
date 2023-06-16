@@ -47,8 +47,6 @@ limit_top = -25
 
 [node name="Mag" parent="." instance=ExtResource( 4 )]
 position = Vector2( 185, 188 )
-accel = 40
-max_vel = 100
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

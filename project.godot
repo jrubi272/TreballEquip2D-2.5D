@@ -22,9 +22,9 @@ _global_script_classes=[ {
 "base": "Estats",
 "class": "EstatsMag",
 "language": "GDScript",
-"path": "res://Scripts/EstatsMag.gd"
+"path": "res://Scenes/EstatsMag.gd"
 }, {
-"base": "Enemic",
+"base": "Reference",
 "class": "Mag",
 "language": "GDScript",
 "path": "res://Scripts/Mag.gd"
