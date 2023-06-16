@@ -1225,6 +1225,48 @@ points = PoolVector2Array( 12.036, 0, 19.704, 0, 20.3521, 21.0041, 11.388, 20.68
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 9/z_index = 0
+10/name = "TX - PlayerDavant.png 10"
+10/texture = ExtResource( 6 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 64, 896, 32, 32 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape_one_way = false
+10/shape_one_way_margin = 0.0
+10/shapes = [  ]
+10/z_index = 0
+11/name = "TX - PlayerDavant.png 11"
+11/texture = ExtResource( 6 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 32, 928, 32, 32 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shape_offset = Vector2( 0, 0 )
+11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+11/shape_one_way = false
+11/shape_one_way_margin = 0.0
+11/shapes = [  ]
+11/z_index = 0
+12/name = "TX - PlayerDavant.png 12"
+12/texture = ExtResource( 6 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 96, 960, 32, 32 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shape_offset = Vector2( 0, 0 )
+12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+12/shape_one_way = false
+12/shape_one_way_margin = 0.0
+12/shapes = [  ]
+12/z_index = 0
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 29.6815, 14.5569, 15.2623, 1.99826, 1.54077, 13.3941, 4.3316, 21.9991, 25.4953, 26.8831 )
@@ -1629,10 +1671,10 @@ points = PoolVector2Array( 7.69142, 0.0361023, 7.69142, 0.0361023, 7.80359, 32, 
 points = PoolVector2Array( 25.2646, 31.7764, 25.2646, 31.7764, 25.3768, 0, 32, 0, 32, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=19]
-points = PoolVector2Array( 7.13065, 31.9654, 0, 32, 0, 0, 7.91574, 0, 7.91574, 30.956, 7.91574, 30.956 )
+points = PoolVector2Array( 7.33626, 30.1288, 0, 30.1288, 0, 0, 7.91574, 0, 7.80357, 21.3432, 7.99051, 28.353 )
 
 [sub_resource type="ConvexPolygonShape2D" id=20]
-points = PoolVector2Array( 25.0403, 30.8438, 25.0403, 30.8438, 25.0403, 0, 32, 0, 32, 32, 25.9376, 31.9654 )
+points = PoolVector2Array( 25.059, 28.9955, 24.9655, 22.0792, 25.0403, 0, 32, 0, 32, 30.0237, 27.3956, 29.9302 )
 
 [sub_resource type="ConvexPolygonShape2D" id=48]
 points = PoolVector2Array( 0, 0, 7.92192, 2.16066, 7.92192, 32, 0, 32 )
