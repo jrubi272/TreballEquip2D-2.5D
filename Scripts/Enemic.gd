@@ -28,7 +28,6 @@ func obtenirCamiJugador() -> void:
 	cami = localitzacio.get_simple_path(global_position, jugador.position)
 
 
-
 func _on_Timer_timeout():
 	if is_instance_valid(jugador):
 		obtenirCamiJugador()

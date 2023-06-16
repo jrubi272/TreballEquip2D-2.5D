@@ -20,21 +20,24 @@ _global_script_classes=[ {
 "path": "res://Scripts/Estats.gd"
 }, {
 "base": "Estats",
+<<<<<<< HEAD
 "class": "EstatsMag",
 "language": "GDScript",
 "path": "res://Scripts/EstatsMag.gd"
 }, {
-"base": "Estats",
+"base": "Reference",
+=======
+>>>>>>> 8895ccc2d66146001329dbcdf91415ce87ab6aa7
 "class": "EstatsOgre",
 "language": "GDScript",
-"path": "res://Scenes/EstatsOgre.gd"
+"path": "res://Scripts/EstatsOgre.gd"
 }, {
 "base": "Enemic",
 "class": "Mag",
 "language": "GDScript",
 "path": "res://Scripts/Mag.gd"
 }, {
-"base": "Enemic",
+"base": "KinematicBody2D",
 "class": "Ogre",
 "language": "GDScript",
 "path": "res://Scripts/Ogre.gd"
@@ -52,7 +55,6 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Enemic": "",
 "Estats": "",
-"EstatsMag": "",
 "EstatsOgre": "",
 "Mag": "",
 "Ogre": "",

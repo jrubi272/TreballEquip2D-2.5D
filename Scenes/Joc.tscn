@@ -49,12 +49,14 @@ limit_top = -25
 
 [node name="Mag" parent="." instance=ExtResource( 4 )]
 position = Vector2( 166, 178 )
+collision_mask = 5
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 
 [node name="Ogre" parent="." instance=ExtResource( 2 )]
 position = Vector2( 196, 208 )
+collision_mask = 5
 
 [node name="HUD" parent="." instance=ExtResource( 6 )]
 
