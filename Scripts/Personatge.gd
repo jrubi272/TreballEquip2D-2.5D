@@ -24,4 +24,6 @@ func moure():
 	velocitat += direccio * accel #aplicam el moviment al personatge
 	velocitat = velocitat.clamped(max_vel) #per a limitar la velocitat del personatge
  
+func sumar_vides(nVides, direccio):
+	pass
 
