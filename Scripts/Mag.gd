@@ -1,6 +1,6 @@
 class_name Mag extends Enemic
 
-const PROJECTIL:= preload("res://Projectil.gd")
+const PROJECTIL:= preload("res://Scenes/Projectil.tscn")
 
 const Max_Distancia_Jugador:= 80
 const Min_Distancia_Jugador:= 40
@@ -18,10 +18,10 @@ func _on_TimerCami_timeout():
 			allunyarse()
 		else:
 			$RayCast2D.cast_to = jugador.position - global_position
-			if potAtacar and estats_pers.estat == estats_pers.estats.idle and not $RayCast2D.is_colliding():
+			if potAtacar and not $RayCast2D.is_colliding():
 				potAtacar = false
-				disparar()
-				$TimerAtac.start()
+				$AnimationPlayer.play("Atacar")
+				$AnimAtacar.start()
 	else:
 		$TimerCami.stop()
 		cami = []
@@ -39,3 +39,8 @@ func disparar():
 
 func _on_TimerAtac_timeout():
 	potAtacar = true
+
+
+func _on_AnimAtacar_timeout():
+	disparar()
+	$TimerAtac.start()
