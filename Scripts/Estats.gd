@@ -32,7 +32,7 @@ func colocar_estat(new_state: int) -> void:
 	estat = new_state
 	entrar_estat(estat_anterior, estat)
 	
-func entrar_estat(estat_anterior: int, _new_state: int) -> void:
+func entrar_estat(estat_anterior: int, nou: int) -> void:
 	pass
 	
 	

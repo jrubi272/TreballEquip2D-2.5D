@@ -14,8 +14,8 @@ func comportament_estats(_delta: float) -> void:
 	pare.get_input()
 	pare.moure()
 
-func entrar_estat(_previous_state: int, new_state: int) -> void:
-	match new_state:
+func entrar_estat(_previous_state: int, nou: int) -> void:
+	match nou:
 		estats.Idle:
 			anim_player.play("Idle")
 		estats.Move:
