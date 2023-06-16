@@ -1,5 +1,5 @@
-extends KinematicBody2D
-class_name Personatge
+class_name Personatge extends KinematicBody2D
+
 
 #constants
 const FRICTION: float = 0.15
@@ -12,6 +12,7 @@ export(int) var max_vel:= 100
 var direccio: Vector2 = Vector2.ZERO #inicialitzat a coordenades (0,0)
 var velocitat: Vector2 = Vector2.ZERO 
 onready var anim_sprite: AnimatedSprite = get_node("AnimatedSprite")
+onready var estats_pers: Node = get_node("Estats")
 
 
 func _physics_process(delta: float) -> void:
