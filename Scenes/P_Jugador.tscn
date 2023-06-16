@@ -251,6 +251,7 @@ tracks/3/keys = {
 }
 
 [node name="P_Jugador" instance=ExtResource( 1 )]
+scale = Vector2( 1.00435, 1.00435 )
 script = ExtResource( 3 )
 
 [node name="Estats" parent="." index="0"]
