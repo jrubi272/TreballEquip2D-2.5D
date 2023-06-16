@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://textures/Enemics/Wizzart_C.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Enemic.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scripts/EstatsMag.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Mag.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -86,9 +85,8 @@ tracks/1/keys = {
 
 [node name="Mag" instance=ExtResource( 2 )]
 script = ExtResource( 4 )
-
-[node name="Node" parent="." index="0"]
-script = ExtResource( 3 )
+accel = null
+max_vel = null
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 texture = ExtResource( 1 )
@@ -119,4 +117,5 @@ anims/RESET = SubResource( 4 )
 
 [node name="TimerCami" type="Timer" parent="." index="8"]
 
+[connection signal="timeout" from="TimerAtac" to="." method="_on_TimerAtac_timeout"]
 [connection signal="timeout" from="TimerCami" to="." method="_on_TimerCami_timeout"]

@@ -6,12 +6,10 @@ var localitzacio: Navigation2D
 var cami: PoolVector2Array
 
 
-
 func _ready():
 	jugador = get_tree().current_scene.get_node("P_Jugador")
 	timer = get_node("Timer")
 	localitzacio = get_tree().current_scene.get_node("Navigation2D")
-
 
 func perseguir_jugador() -> void:
 	if cami:

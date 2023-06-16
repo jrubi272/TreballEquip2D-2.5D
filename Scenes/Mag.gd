@@ -18,7 +18,24 @@ func _on_TimerCami_timeout():
 			allunyarse()
 		else:
 			$RayCast2D.cast_to = jugador.position - global_position
-			pass
+			if potAtacar and estats_pers.estat == estats_pers.estats.idle and not $RayCast2D.is_colliding():
+				potAtacar = false
+				disparar()
+				$TimerAtac.start()
+	else:
+		$TimerCami.stop()
+		cami = []
+		direccio = Vector2.ZERO
 
 func allunyarse():
-	pass
+	var direccio = (global_position - jugador.position).normalized()
+	cami = localitzacio.get_simple_path(global_position, global_position + direccio*100)
+	
+
+func disparar():
+	var proj = PROJECTIL.instance()
+	proj.ini(global_position, (jugador.position - global_position).normalized())
+	get_tree().current_scene.add_child(proj)
+
+func _on_TimerAtac_timeout():
+	potAtacar = true

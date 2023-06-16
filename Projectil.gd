@@ -3,6 +3,8 @@ class_name Projectil extends Area2D
 signal disparat(area)
 
 export var velocitat:= 400
+export var dany = 1
+
 var potTocar:= []
 var potDisparar:= []
 var direccio:= Vector2()
@@ -32,4 +34,5 @@ func _on_Projectil_area_entered(area):
 
 func _on_Projectil_body_entered(body):
 	if not body in potDisparar:
+		body.sumar_vides(-1, Vector2.ZERO)
 		queue_free()
