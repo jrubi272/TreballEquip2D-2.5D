@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Estats",
 "class": "EstatsOgre",
 "language": "GDScript",
-"path": "res://Scenes/EstatsOgre.gd"
+"path": "res://Scripts/EstatsOgre.gd"
 }, {
 "base": "Enemic",
 "class": "Mag",
