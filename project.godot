@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Enemic.gd"
 }, {
+"base": "Node2D",
+"class": "Escenari",
+"language": "GDScript",
+"path": "res://Scenes/Escenari.gd"
+}, {
 "base": "Node",
 "class": "Estats",
 "language": "GDScript",
@@ -51,6 +56,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Enemic": "",
+"Escenari": "",
 "Estats": "",
 "EstatsMag": "",
 "EstatsOgre": "",
