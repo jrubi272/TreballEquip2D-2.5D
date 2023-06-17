@@ -2,7 +2,7 @@ extends Personatge
 
 onready var espasa: Node2D = get_node("Espasa")
 onready var espasa_anim_player: AnimationPlayer = espasa.get_node("Espasa_AnimationPlayer")
-
+onready var espasa_hitbox: Area2D = get_node("Espasa/Node2D/Sprite/Hitbox")
 
 
 func _process(_delta: float) -> void:
@@ -14,6 +14,8 @@ func _process(_delta: float) -> void:
 		anim_sprite.flip_h = true
 	
 	espasa.rotation = mouse_direction.angle()
+	#espasa_hitbox.direccio_empenta = mouse_direction
+	
 	if espasa.scale.y == 1 and mouse_direction.x < 0:
 		espasa.scale.y = -1
 	elif espasa.scale.y == -1 and mouse_direction.x > 0:

@@ -1,9 +1,21 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scripts/Ogre.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Enemic.tscn" type="PackedScene" id=2]
 [ext_resource path="res://textures/Enemics/Orc_Big.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/EstatsOgre.gd" type="Script" id=4]
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 3 )
+region = Rect2( 320, 32, 64, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 3 )
+region = Rect2( 384, 32, 64, 32 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 3 )
+region = Rect2( 448, 32, 64, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
@@ -39,6 +51,11 @@ region = Rect2( 448, 0, 64, 32 )
 
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": true,
+"name": "danyar",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
 "name": "default",
@@ -65,6 +82,34 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
+[sub_resource type="Animation" id=18]
+resource_name = "Danyar"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "danyar" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
@@ -79,6 +124,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 1 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "danyar" ]
+}
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 13, 12.5 )
@@ -91,6 +148,7 @@ script = ExtResource( 4 )
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 13 )
+animation = "danyar"
 frame = 1
 
 [node name="CollisionShape2D" parent="." index="2"]
@@ -99,6 +157,7 @@ shape = SubResource( 3 )
 
 [node name="AnimationPlayer" parent="." index="4"]
 anims/Caminar = SubResource( 14 )
+anims/Danyar = SubResource( 18 )
 anims/RESET = SubResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="." index="5"]

@@ -3058,6 +3058,7 @@ points = PoolVector2Array( 12, 28.625, 19.875, 28.5, 20, 32, 12.0625, 32 )
 12/z_index = 0
 
 [node name="Escenari2" type="Node2D"]
+scale = Vector2( 0.75, 0.75 )
 
 [node name="Herba" type="TileMap" parent="."]
 tile_set = SubResource( 136 )
@@ -3103,3 +3104,6 @@ cell_size = Vector2( 32, 32 )
 bake_navigation = true
 format = 1
 tile_data = PoolIntArray( 458765, 10, 0, 458766, 11, 0, 458767, 12, 0, 524301, 8, 0, 524302, 7, 0, 524303, 6, 0, 589837, 9, 0, 589838, 4, 0, 589839, 5, 0 )
+
+[node name="puntInici" type="Position2D" parent="."]
+position = Vector2( 229.333, 246.667 )

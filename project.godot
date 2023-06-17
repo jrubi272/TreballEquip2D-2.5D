@@ -14,10 +14,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Enemic.gd"
 }, {
-"base": "Node2D",
+"base": "Reference",
 "class": "Escenari",
 "language": "GDScript",
-"path": "res://Scenes/Escenari.gd"
+"path": "res://Scripts/Escenari.gd"
 }, {
 "base": "Node",
 "class": "Estats",
@@ -33,6 +33,11 @@ _global_script_classes=[ {
 "class": "EstatsOgre",
 "language": "GDScript",
 "path": "res://Scripts/EstatsOgre.gd"
+}, {
+"base": "Area2D",
+"class": "Hitbox",
+"language": "GDScript",
+"path": "res://Scripts/Hitbox.gd"
 }, {
 "base": "Enemic",
 "class": "Mag",
@@ -60,6 +65,7 @@ _global_script_class_icons={
 "Estats": "",
 "EstatsMag": "",
 "EstatsOgre": "",
+"Hitbox": "",
 "Mag": "",
 "Ogre": "",
 "Personatge": "",
