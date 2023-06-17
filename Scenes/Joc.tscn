@@ -1,8 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/Ogre.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Joc.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Mag.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/P_Jugador.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=6]
 
@@ -11,24 +9,16 @@ script = ExtResource( 3 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
-[node name="Mag" parent="." instance=ExtResource( 4 )]
-position = Vector2( 211, 135 )
-collision_mask = 5
-
 [node name="prova" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 autostart = true
-
-[node name="Ogre" parent="." instance=ExtResource( 2 )]
-position = Vector2( 170, 222 )
-collision_mask = 5
 
 [node name="HUD" parent="." instance=ExtResource( 6 )]
 
 [node name="P_Jugador" parent="." instance=ExtResource( 5 )]
 position = Vector2( 432, 108 )
 
-[connection signal="timeout" from="prova" to="." method="_on_prova_timeout"]
-[connection signal="augmentarVel" from="HUD" to="." method="mesVelJug"]
-[connection signal="buffElegit" from="HUD" to="." method="gestio_nivells"]
+[node name="SpawnEnemics" type="Timer" parent="."]
+
+[connection signal="timeout" from="SpawnEnemics" to="." method="_on_SpawnEnemics_timeout"]

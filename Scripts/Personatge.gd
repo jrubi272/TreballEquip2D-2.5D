@@ -40,7 +40,7 @@ func actualitzar_vides(nVides, direccio):
 
 func rebre_dany(dany: int, dir: Vector2, forca: int) -> void:
 	vides -= dany
-	estats_pers.colocar_estat(estats_pers.estats.danyar)
+	estats_pers.colocar_estat(estats_pers.estats.danyars) 
 	velocitat += dir * forca
 
 func set_pos_inicial(pos:Vector2):

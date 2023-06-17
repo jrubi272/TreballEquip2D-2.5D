@@ -3,7 +3,6 @@
 [ext_resource path="res://textures/Enemics/Bullet_Wizzart_C.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Projectil.gd" type="Script" id=2]
 
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.0
 
@@ -18,5 +17,4 @@ shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 
-[connection signal="area_entered" from="." to="." method="_on_Projectil_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_Projectil_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Projectil_body_exited"]

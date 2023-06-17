@@ -1,13 +1,11 @@
-class_name Projectil extends Area2D
+class_name Projectil extends Hitbox
 
-signal disparat(area)
 
 export var velocitat:= 400
 export var dany = 1
 
-var potTocar:= []
-var potDisparar:= []
 var direccio:= Vector2()
+var sortit = false
 
 
 func ini(dir:Vector2, posInicial:Vector2):
@@ -19,20 +17,17 @@ func ini(dir:Vector2, posInicial:Vector2):
 func _physics_process(delta):
 	position += direccio * velocitat * delta
 
-func afegir_porTocar(esser:Node):
-	potTocar.append(esser)
-	
-func afegir_potDisparar(esser:Node):
-	potDisparar.append(esser)
-	
 
-func _on_Projectil_area_entered(area):
-	if area in potTocar:
-		emit_signal("disparat", area)
-	queue_free()
+func _on_Projectil_body_exited(body):
+	if not sortit:
+		sortit = true
+		set_collision_mask_bit(0, true)
+		set_collision_mask_bit(1, true)
+		set_collision_mask_bit(2, true)
+		set_collision_mask_bit(3, true)
 
-
-func _on_Projectil_body_entered(body):
-	if not body in potDisparar:
-		body.sumar_vides(-1, Vector2.ZERO)
+func colisionar(body: KinematicBody2D) -> void:
+	if sortit:
+		if body != null:
+			body.rebre_dany(danys, direccio_empenta, forca_empenta)
 		queue_free()

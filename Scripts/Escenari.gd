@@ -14,3 +14,6 @@ func canviar_collisions(capa:int, valor:bool):
 	tileEscales.set_collision_layer_bit(capa, valor)
 	tileParets.set_collision_layer_bit(capa, valor)
 	tileEscales.set_collision_layer_bit(capa, valor)
+
+func transitable(coordenada:Vector2):
+	pass

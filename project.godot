@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Enemic.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "Escenari",
 "language": "GDScript",
 "path": "res://Scripts/Escenari.gd"
@@ -54,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Personatge.gd"
 }, {
-"base": "Area2D",
+"base": "Hitbox",
 "class": "Projectil",
 "language": "GDScript",
 "path": "res://Scripts/Projectil.gd"
