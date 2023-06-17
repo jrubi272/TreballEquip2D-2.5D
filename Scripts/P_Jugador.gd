@@ -23,6 +23,7 @@ func _process(_delta: float) -> void:
 	elif espasa.scale.y == -1 and mouse_direction.x > 0:
 		espasa.scale.y = 1
 	if Input.is_action_just_pressed("ui_attack") and not espasa_anim_player.is_playing():
+		print (get_global_mouse_position())
 		espasa_anim_player.play("attack")
 
 func get_input() -> void:

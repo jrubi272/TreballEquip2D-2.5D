@@ -14,6 +14,7 @@ var direccio: Vector2 = Vector2.ZERO #inicialitzat a coordenades (0,0)
 var velocitat: Vector2 = Vector2.ZERO
 var _posInicial: Vector2
 var potMoure: bool = true
+var pos = self.position
 
 onready var anim_sprite: AnimatedSprite = get_node("AnimatedSprite")
 onready var estats_pers: Node = get_node("Estats")
@@ -40,7 +41,7 @@ func actualitzar_vides(nVides, direccio):
 
 func rebre_dany(dany: int, dir: Vector2, forca: int) -> void:
 	vides -= dany
-	estats_pers.colocar_estat(estats_pers.estats.danyars) 
+	estats_pers.colocar_estat(estats_pers.estats.danyar) 
 	velocitat += dir * forca
 
 func set_pos_inicial(pos:Vector2):

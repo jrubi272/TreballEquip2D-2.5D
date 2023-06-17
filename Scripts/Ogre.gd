@@ -4,4 +4,5 @@ onready var hitbox: Area2D = get_node("Area2D")
 
 
 func _process(delta):
-	hitbox.direccio_empenta = velocitat.normalized()
+	#hitbox.direccio_empenta = velocitat.normalized()
+	pass

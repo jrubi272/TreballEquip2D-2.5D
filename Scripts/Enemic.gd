@@ -12,7 +12,6 @@ func _ready():
 	localitzacio = get_tree().current_scene.get_node("Navigation2D")
 
 func perseguir_jugador() -> void:
-	print ("perseguir va")
 	if cami:
 		var seguentLloc = cami[0] - global_position
 		var distanciaSeguentLloc = seguentLloc.length()
@@ -37,5 +36,4 @@ func _on_Timer_timeout():
 
 
 func obtenirCamiJugador() -> void:
-	print ("obtenircami va")
 	cami = localitzacio.get_simple_path(global_position, jugador.position)

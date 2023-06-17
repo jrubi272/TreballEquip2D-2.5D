@@ -21,6 +21,10 @@ var enemics_inicials = 2
 var enemics_per_ronda = 5
 var temps_spawn_enemics = 5
 var escenari
+var esc_xMax 
+var esc_xMin
+var esc_yMax
+var esc_yMin
 var lvl : int = 1
 var rand = RandomNumberGenerator.new()
 
@@ -47,6 +51,10 @@ func _ready():
 	var nivell1 = NIV1.instance()
 	navi.add_child(nivell1, true)
 	escenari = nivell1
+	esc_xMax = 530
+	esc_xMin = -100
+	esc_yMax = 340
+	esc_yMin = 25
 	$HUD.actualitzar_vida(-1)
 	iniciar_enemics()
 
@@ -63,6 +71,10 @@ func canviar_nivell2():
 	$P_Jugador/Camera2D.limit_right = 508
 	$P_Jugador/Camera2D.limit_top = 0
 	escenari = nivell2
+	esc_xMax = 500
+	esc_xMin = -50
+	esc_yMax = 320
+	esc_yMin = 30
 
 func canviar_nivell3():
 	
@@ -77,6 +89,10 @@ func canviar_nivell3():
 	$P_Jugador/Camera2D.limit_right = 485
 	$P_Jugador/Camera2D.limit_top = 0
 	escenari = nivell3
+	esc_xMax = 385
+	esc_xMin = -30
+	esc_yMax = 290
+	esc_yMin = 50
 
 func canviar_nivell4():
 	
@@ -91,6 +107,10 @@ func canviar_nivell4():
 	$P_Jugador/Camera2D.limit_right = 452
 	$P_Jugador/Camera2D.limit_top = 0
 	escenari = nivell4
+	esc_xMax = 450
+	esc_xMin = -50
+	esc_yMax = 360
+	esc_yMin = 0
 
 func mesVelJug():
 	$P_Jugador/Estats.max_vel_jug += 30
@@ -111,7 +131,7 @@ func gestio_nivells():
 		canviar_nivell4()
 
 func iniciar_enemics(): 
-	while enemics_en_joc < enemics_inicials:
+	while enemics_en_joc <= enemics_inicials:
 		if enemics_en_joc % 2 == 0:
 			colocar_enemic("ogre")
 		else:
@@ -129,12 +149,12 @@ func colocar_enemic(tipus:String):
 	self.add_child(enemic, true)
 	var valid:= false
 	while not valid:
-		var randX = rand.randi_range(0, 450)
-		var randY = rand.randi_range(50, 250)
-		var posInicial = Vector2(randX,randY)
-		if escenari.transitable(posInicial):
+		var randX = rand.randi_range(-100, 520)
+		var randY = rand.randi_range(20, 330)
+		var coordenada = Vector2(randX,randY)
+		if posValida(coordenada, $P_Jugador.position):
 			valid = true
-			enemic.position = posInicial
+			enemic.position = coordenada
 
 func _on_SpawnEnemics_timeout():
 	if enemics_en_joc < enemics_per_ronda:
@@ -144,3 +164,11 @@ func _on_SpawnEnemics_timeout():
 			colocar_enemic("mag")
 		enemics_en_joc += 1
 		$SpawnEnemics.start()
+		
+func posValida(coordenada:Vector2, posJugador):
+	if coordenada.x - posJugador.x < 10 or coordenada.y - posJugador.y < 10:
+		return false
+	elif not escenari.transitable(coordenada):
+		return false
+	else:
+		return true
