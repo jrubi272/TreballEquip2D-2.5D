@@ -286,6 +286,7 @@ script = ExtResource( 3 )
 
 [node name="Estats" parent="." index="0"]
 script = ExtResource( 4 )
+max_vel_jug = 100
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2( 0, 2.987 )

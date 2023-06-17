@@ -4,17 +4,19 @@ onready var espasa: Node2D = get_node("Espasa")
 onready var espasa_anim_player: AnimationPlayer = espasa.get_node("Espasa_AnimationPlayer")
 onready var espasa_hitbox: Area2D = get_node("Espasa/Node2D/Sprite/Hitbox")
 
+var potMoureEspasa : bool = true
 
 func _process(_delta: float) -> void:
+	
 	var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
-	
-	if mouse_direction.x > 0 and anim_sprite.flip_h:
-		anim_sprite.flip_h = false
-	elif mouse_direction.x < 0 and not anim_sprite.flip_h:
-		anim_sprite.flip_h = true
-	
-	espasa.rotation = mouse_direction.angle()
-	#espasa_hitbox.direccio_empenta = mouse_direction
+	if potMoureEspasa:
+		if mouse_direction.x > 0 and anim_sprite.flip_h:
+			anim_sprite.flip_h = false
+		elif mouse_direction.x < 0 and not anim_sprite.flip_h:
+			anim_sprite.flip_h = true
+		
+		espasa.rotation = mouse_direction.angle()
+		#espasa_hitbox.direccio_empenta = mouse_direction
 	
 	if espasa.scale.y == 1 and mouse_direction.x < 0:
 		espasa.scale.y = -1

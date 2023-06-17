@@ -1,5 +1,6 @@
 extends Estats
 
+export var max_vel_jug = 100
 
 func _init() -> void:
 	afegir_estat("Idle")
@@ -12,7 +13,7 @@ func _ready() -> void:
 
 func comportament_estats(_delta: float) -> void:
 	pare.get_input()
-	pare.moure()
+	pare.moure(max_vel_jug)
 
 func entrar_estat(_previous_state: int, nou: int) -> void:
 	match nou:

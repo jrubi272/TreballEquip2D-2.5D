@@ -12,7 +12,8 @@ export(int) var vides = 4
 #Variables/Atributs
 var direccio: Vector2 = Vector2.ZERO #inicialitzat a coordenades (0,0)
 var velocitat: Vector2 = Vector2.ZERO
-var _posInicial: Vector2 
+var _posInicial: Vector2
+var potMoure: bool = true
 
 onready var anim_sprite: AnimatedSprite = get_node("AnimatedSprite")
 onready var estats_pers: Node = get_node("Estats")
@@ -22,13 +23,20 @@ func _physics_process(delta: float) -> void:
 	velocitat = move_and_slide(velocitat)
 	velocitat = lerp(velocitat, Vector2.ZERO, FRICTION)#per a disminuir gradualment la velocitat del personatge
 
-func moure():
-	direccio = direccio.normalized()
-	velocitat += direccio * accel #aplicam el moviment al personatge
-	velocitat = velocitat.clamped(max_vel) #per a limitar la velocitat del personatge
+func moure(max_veloc: int):
+	if potMoure:
+		direccio = direccio.normalized()
+		if max_veloc > 100:
+			velocitat += direccio * 1.6
+		velocitat += direccio * accel #aplicam el moviment al personatge
+		velocitat = velocitat.clamped(max_veloc) #per a limitar la velocitat del personatge
  
-func sumar_vides(nVides, direccio):
+func actualitzar_vides(nVides, direccio):
 	vides += nVides
+	if nVides > 0:
+		pass #gestionar cuando todavia vive
+	else:
+		pass #gestionar cuando muere
 
 func rebre_dany(dany: int, dir: Vector2, forca: int) -> void:
 	vides -= dany

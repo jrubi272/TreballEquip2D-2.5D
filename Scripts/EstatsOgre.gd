@@ -11,7 +11,7 @@ func _ready():
 func comportament_estats(_delta: float) -> void:
 	if estat == estats.caminar:
 		pare.perseguir_jugador()
-		pare.moure()
+		pare.moure(90)
 
 func entrar_estat(estat_anterior: int, nou: int) -> void:
 	match nou:
