@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Scenes/Personatge.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/player/player_idle.png" type="Texture" id=2]
@@ -8,6 +8,40 @@
 [ext_resource path="res://textures/slash_effect_anim_spritesheet.png" type="Texture" id=6]
 [ext_resource path="res://textures/player/player_move.png" type="Texture" id=7]
 [ext_resource path="res://Scripts/Hitbox.gd" type="Script" id=8]
+[ext_resource path="res://textures/player/player_dead.png" type="Texture" id=9]
+[ext_resource path="res://textures/enemy_afterdead_explosion_anim_spritesheet.png" type="Texture" id=10]
+
+[sub_resource type="CapsuleShape2D" id=17]
+radius = 6.96967
+height = 0.0
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 48, 30 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 9 )
+region = Rect2( 48, 0, 48, 30 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 9 )
+region = Rect2( 96, 0, 48, 30 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 10 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 10 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 10 )
+region = Rect2( 48, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 2 )
@@ -59,6 +93,11 @@ region = Rect2( 240, 0, 48, 44 )
 
 [sub_resource type="SpriteFrames" id=32]
 animations = [ {
+"frames": [ SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ) ],
+"loop": true,
+"name": "Dead",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
 "loop": true,
 "name": "Idle",
@@ -69,10 +108,6 @@ animations = [ {
 "name": "Move",
 "speed": 5.0
 } ]
-
-[sub_resource type="CapsuleShape2D" id=17]
-radius = 6.96967
-height = 0.0
 
 [sub_resource type="CapsuleShape2D" id=36]
 radius = 10.1837
@@ -206,6 +241,86 @@ tracks/4/keys = {
 "values": [ false, true ]
 }
 
+[sub_resource type="Animation" id=44]
+resource_name = "Dead"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Dead" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=45]
+resource_name = "Hurt"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+
 [sub_resource type="Animation" id=33]
 resource_name = "Idle"
 length = 0.6
@@ -278,6 +393,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "Idle" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [node name="P_Jugador" instance=ExtResource( 1 )]
 scale = Vector2( 1.00435, 1.00435 )
@@ -290,15 +429,16 @@ script = ExtResource( 3 )
 script = ExtResource( 4 )
 max_vel_jug = 100
 
-[node name="AnimatedSprite" parent="." index="1"]
-scale = Vector2( 1, 1 )
-frames = SubResource( 32 )
-animation = "Idle"
-
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="1"]
 position = Vector2( 0, 2.987 )
 scale = Vector2( 0.840693, 1.00602 )
 shape = SubResource( 17 )
+
+[node name="AnimatedSprite" parent="." index="2"]
+visible = false
+scale = Vector2( 1, 1 )
+frames = SubResource( 32 )
+animation = "Idle"
 
 [node name="Espasa" type="Node2D" parent="." index="3"]
 
@@ -342,6 +482,8 @@ limit_right = 555
 limit_bottom = 350
 
 [node name="AnimationPlayer" parent="." index="5"]
+anims/Dead = SubResource( 44 )
+anims/Hurt = SubResource( 45 )
 anims/Idle = SubResource( 33 )
 anims/Move = SubResource( 34 )
 anims/RESET = SubResource( 35 )

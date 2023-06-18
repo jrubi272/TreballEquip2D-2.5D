@@ -38,41 +38,61 @@ centered = false
 [node name="Millores" type="CanvasLayer" parent="."]
 
 [node name="mesVida" type="Button" parent="Millores"]
-margin_left = 76.0
+margin_left = 49.0
 margin_top = 121.0
-margin_right = 156.0
+margin_right = 129.0
 margin_bottom = 151.0
 custom_colors/font_color = Color( 0.988235, 0.164706, 0.164706, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "+1 VIDA"
 
 [node name="mesVel" type="Button" parent="Millores"]
-margin_left = 184.0
+margin_left = 157.0
 margin_top = 121.0
-margin_right = 314.0
+margin_right = 287.0
 margin_bottom = 151.0
 custom_colors/font_color = Color( 0.576471, 0.835294, 0.933333, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "+ vELOCITAT"
 
-[node name="mesDany" type="Button" parent="Millores"]
-margin_left = 340.0
+[node name="menysEnems" type="Button" parent="Millores"]
+margin_left = 313.0
 margin_top = 121.0
-margin_right = 420.0
+margin_right = 441.0
 margin_bottom = 151.0
 custom_colors/font_color = Color( 0.945098, 0.678431, 0.298039, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "+ dany"
+text = "-2 enemics "
 
 [node name="Label" type="Label" parent="Millores"]
-margin_left = 141.0
+margin_left = 136.0
 margin_top = 71.0
-margin_right = 347.0
+margin_right = 342.0
 margin_bottom = 95.0
 custom_fonts/font = SubResource( 4 )
 text = "ELEGEIX UNA MILLORA:"
 align = 1
 
+[node name="enems" type="Label" parent="."]
+margin_left = 172.0
+margin_top = 4.0
+margin_right = 378.0
+margin_bottom = 28.0
+rect_scale = Vector2( 0.691764, 0.691764 )
+custom_fonts/font = SubResource( 4 )
+text = "ENEMICS ELIMINATS: 0"
+align = 1
+
+[node name="ronda" type="Label" parent="."]
+margin_left = 359.0
+margin_top = 4.0
+margin_right = 565.0
+margin_bottom = 28.0
+rect_scale = Vector2( 0.691764, 0.691764 )
+custom_fonts/font = SubResource( 4 )
+text = "RONDA: 1"
+align = 1
+
 [connection signal="pressed" from="Millores/mesVida" to="." method="_on_mesVida_pressed"]
 [connection signal="pressed" from="Millores/mesVel" to="." method="_on_mesVel_pressed"]
-[connection signal="pressed" from="Millores/mesDany" to="." method="_on_mesDany_pressed"]
+[connection signal="pressed" from="Millores/menysEnems" to="." method="_on_menysEnems_pressed"]

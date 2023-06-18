@@ -23,9 +23,12 @@ var enemics_en_joc = 0
 var enemics_inicials = 2
 var enemics_per_ronda = 5
 var temps_spawn_enemics = 5
+var enemics_eliminats = 0
+var treureEnems = 0
 var escenari
 var lvl : int = 1
 var rand = RandomNumberGenerator.new()
+var ronda = 1
 
 func _init() -> void:
 	randomize()
@@ -41,6 +44,7 @@ func _ready():
 	$SpawnEnemics.start()
 	$HUD/Millores.visible = false
 	$HUD.connect("augmentarVel", self, "mesVelJug")
+	$HUD.connect("menysEnems", self, "menysEnemicsRonda")
 	$HUD.connect("buffElegit", self, "gestio_nivells")
 	#gestions pel primer nivell
 	$P_Jugador/Camera2D.limit_bottom = 342
@@ -67,8 +71,9 @@ func canviar_nivell2():
 	$P_Jugador/Camera2D.limit_top = 0
 	escenari = nivell2
 	enemics_inicials = 3
-	enemics_per_ronda = 8
+	enemics_per_ronda = 9 - treureEnems
 	temps_spawn_enemics = 4
+	treureEnems = 0
 	iniciar_enemics()
 
 
@@ -86,8 +91,9 @@ func canviar_nivell3():
 	$P_Jugador/Camera2D.limit_top = 0
 	escenari = nivell3
 	enemics_inicials = 4
-	enemics_per_ronda = 12
+	enemics_per_ronda = 14 - treureEnems
 	temps_spawn_enemics = 3
+	treureEnems = 0
 	iniciar_enemics()
 
 func canviar_nivell4():
@@ -104,8 +110,9 @@ func canviar_nivell4():
 	$P_Jugador/Camera2D.limit_top = 0
 	escenari = nivell4
 	enemics_inicials = 5
-	enemics_per_ronda = 20
+	enemics_per_ronda = 20 - treureEnems
 	temps_spawn_enemics = 3
+	treureEnems = 0
 	iniciar_enemics()
 
 func mesVelJug():
@@ -115,9 +122,11 @@ func _on_prova_timeout():
 	$HUD/Millores.visible = true
 	$P_Jugador.potMoure = false
 	$P_Jugador.potMoureEspasa = false
+	$prova2.start()
 
 func gestio_nivells():
 	lvl += 1
+	pujarRonda()
 	$HUD/Millores.visible = false
 	if lvl == 2:
 		canviar_nivell2()
@@ -170,8 +179,15 @@ func posValida(coordenada:Vector2, posJugador):
 		
 func _on_enemic_mort():
 	enemics_en_joc -= 1
-	if enemics_en_joc == 0:
-		gestio_nivells()
+	enemics_eliminats += 1
+	$HUD/enems.set_text("ENEMICS ELIMINATS: " + str(enemics_eliminats))
+	print("enemic mort")
+	#if enemics_en_joc == 0:
+		#gestio_nivells()
+	if enemics_eliminats == 1:
+		$HUD/Millores.visible = true
+		$P_Jugador.potMoure = false
+		$P_Jugador.potMoureEspasa = false
 
 
 func _on_P_Jugador_mort():
@@ -190,3 +206,24 @@ func _on_P_Jugador_mort():
 func _on_Menu_reintentar():
 	navi.get_child(0).queue_free()
 	_ready()
+
+
+func menysEnemicsRonda():
+	treureEnems == 2
+
+func pujarRonda():
+	ronda += 1
+	$HUD/ronda.set_text("RONDA: " + str(ronda))
+
+
+func _on_prova2_timeout():
+	$HUD/Millores.visible = true
+	$P_Jugador.potMoure = false
+	$P_Jugador.potMoureEspasa = false
+	$prova3.start()
+
+
+func _on_prova3_timeout():
+	$HUD/Millores.visible = true
+	$P_Jugador.potMoure = false
+	$P_Jugador.potMoureEspasa = false

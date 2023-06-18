@@ -4,6 +4,7 @@ extends CanvasLayer
 signal mort
 signal augmentarVel
 signal buffElegit
+signal menysEnems
 
 var parent = get_parent()
 
@@ -28,5 +29,6 @@ func _on_mesVel_pressed():
 	emit_signal("augmentarVel")
 	emit_signal("buffElegit")
 
-func _on_mesDany_pressed():
+func _on_menysEnems_pressed():
 	emit_signal("buffElegit")
+	emit_signal("menysEnems")

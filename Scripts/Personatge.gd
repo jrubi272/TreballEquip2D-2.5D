@@ -1,6 +1,5 @@
 class_name Personatge extends KinematicBody2D
 
-
 signal mort
 
 #constants
@@ -47,10 +46,10 @@ func rebre_dany(dany: int, dir: Vector2, forca: int) -> void:
 			estats_pers.colocar_estat(estats_pers.estats.danyar)
 			velocitat += dir * forca
 		elif vides == 0:
-			#emit_signal("mort")
 			estats_pers.colocar_estat(estats_pers.estats.mort)
 			velocitat += direccio * forca * 2
-			
+			emit_signal("mort")
+
 func set_pos_inicial(pos:Vector2):
 	position = pos
 	_posInicial = pos
