@@ -9,10 +9,6 @@
 [ext_resource path="res://textures/player/player_move.png" type="Texture" id=7]
 [ext_resource path="res://Scripts/Hitbox.gd" type="Script" id=8]
 
-[sub_resource type="CapsuleShape2D" id=17]
-radius = 6.96967
-height = 0.0
-
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 48, 43 )
@@ -74,78 +70,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=33]
-resource_name = "Idle"
-length = 0.6
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "Idle" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimatedSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
-}
-
-[sub_resource type="Animation" id=34]
-resource_name = "Move"
-length = 0.6
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "Move" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimatedSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
-}
-
-[sub_resource type="Animation" id=35]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0 ]
-}
+[sub_resource type="CapsuleShape2D" id=17]
+radius = 6.96967
+height = 0.0
 
 [sub_resource type="CapsuleShape2D" id=36]
 radius = 10.1837
@@ -279,6 +206,79 @@ tracks/4/keys = {
 "values": [ false, true ]
 }
 
+[sub_resource type="Animation" id=33]
+resource_name = "Idle"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_name = "Move"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Move" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=35]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
 [node name="P_Jugador" instance=ExtResource( 1 )]
 scale = Vector2( 1.00435, 1.00435 )
 z_index = 1
@@ -290,21 +290,17 @@ script = ExtResource( 3 )
 script = ExtResource( 4 )
 max_vel_jug = 100
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="AnimatedSprite" parent="." index="1"]
+scale = Vector2( 1, 1 )
+frames = SubResource( 32 )
+animation = "Idle"
+
+[node name="CollisionShape2D" parent="." index="2"]
 position = Vector2( 0, 2.987 )
 scale = Vector2( 0.840693, 1.00602 )
 shape = SubResource( 17 )
 
-[node name="AnimatedSprite" parent="." index="2"]
-frames = SubResource( 32 )
-animation = "Idle"
-
-[node name="AnimationPlayer" parent="." index="3"]
-anims/Idle = SubResource( 33 )
-anims/Move = SubResource( 34 )
-anims/RESET = SubResource( 35 )
-
-[node name="Espasa" type="Node2D" parent="." index="4"]
+[node name="Espasa" type="Node2D" parent="." index="3"]
 
 [node name="Node2D" type="Node2D" parent="Espasa" index="0"]
 position = Vector2( 0, -3 )
@@ -338,11 +334,16 @@ scale = Vector2( 1.47648, 1.47648 )
 texture = ExtResource( 6 )
 hframes = 3
 
-[node name="Camera2D" type="Camera2D" parent="." index="5"]
+[node name="Camera2D" type="Camera2D" parent="." index="4"]
 current = true
 limit_left = -100
 limit_top = 50
 limit_right = 555
 limit_bottom = 350
+
+[node name="AnimationPlayer" parent="." index="5"]
+anims/Idle = SubResource( 33 )
+anims/Move = SubResource( 34 )
+anims/RESET = SubResource( 35 )
 
 [connection signal="ready" from="." to="." method="_on_P_Jugador_ready"]

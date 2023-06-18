@@ -9,7 +9,7 @@ const FRICTION: float = 0.15
 #export variables
 export(int) var accel:= 40
 export(int) var max_vel:= 100
-export(int) var vides = 4
+export(int) var vides = 2
 
 #Variables/Atributs
 var direccio: Vector2 = Vector2.ZERO #inicialitzat a coordenades (0,0)
@@ -44,11 +44,12 @@ func rebre_dany(dany: int, dir: Vector2, forca: int) -> void:
 	if estats_pers.estat != estats_pers.estats.danyar:
 		vides -= dany
 		if vides > 0: 
-			#estats_pers.colocar_estats(estats_pers.estats.danyar)
+			estats_pers.colocar_estat(estats_pers.estats.danyar)
 			velocitat += dir * forca
 		elif vides == 0:
 			#emit_signal("mort")
-			pass
+			estats_pers.colocar_estat(estats_pers.estats.mort)
+			velocitat += direccio * forca * 2
 			
 func set_pos_inicial(pos:Vector2):
 	position = pos

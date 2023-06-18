@@ -4,6 +4,7 @@ class_name EstatsOgre extends Estats
 func _init():
 	afegir_estat("caminar")
 	afegir_estat("danyar")
+	afegir_estat("mort")
 
 func _ready():
 	colocar_estat(estats.caminar)
@@ -19,6 +20,8 @@ func entrar_estat(estat_anterior: int, nou: int) -> void:
 			anim_player.play("Caminar")
 		estats.danyar:
 			anim_player.play("Danyar")
+		estats.mort:
+			anim_player.play("Mort")
 
 func transicionar() -> int:
 	match estat:

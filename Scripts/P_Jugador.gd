@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 			anim_sprite.flip_h = true
 		
 		espasa.rotation = mouse_direction.angle()
-		#espasa_hitbox.direccio_empenta = mouse_direction
+		espasa_hitbox.direccio_empenta = mouse_direction
 	
 	if espasa.scale.y == 1 and mouse_direction.x < 0:
 		espasa.scale.y = -1
@@ -40,3 +40,4 @@ func get_input() -> void:
 
 func _on_P_Jugador_ready():
 	$Espasa/Slash.visible = false
+	vides = 4

@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scripts/Ogre.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Enemic.tscn" type="PackedScene" id=2]
 [ext_resource path="res://textures/Enemics/Orc_Big.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/EstatsOgre.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Hitbox.gd" type="Script" id=5]
+[ext_resource path="res://textures/enemy_afterdead_explosion_anim_spritesheet.png" type="Texture" id=6]
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
@@ -50,11 +51,32 @@ region = Rect2( 384, 32, 64, 32 )
 atlas = ExtResource( 3 )
 region = Rect2( 448, 32, 64, 32 )
 
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 6 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 6 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 6 )
+region = Rect2( 48, 0, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
 "name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
+"loop": true,
+"name": "mort",
 "speed": 5.0
 } ]
 
@@ -77,6 +99,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 1, 2, 3, 4, 5, 6, 7 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "default" ]
+}
 
 [sub_resource type="Animation" id=23]
 resource_name = "Danyar"
@@ -92,6 +126,59 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 8, 9, 10 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "default" ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "Mort"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "default", "mort" ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -132,6 +219,7 @@ script = ExtResource( 4 )
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 13 )
+animation = "mort"
 frame = 1
 
 [node name="CollisionShape2D" parent="." index="2"]
@@ -141,6 +229,7 @@ shape = SubResource( 3 )
 [node name="AnimationPlayer" parent="." index="4"]
 anims/Caminar = SubResource( 19 )
 anims/Danyar = SubResource( 23 )
+anims/Mort = SubResource( 28 )
 anims/RESET = SubResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="." index="5"]
