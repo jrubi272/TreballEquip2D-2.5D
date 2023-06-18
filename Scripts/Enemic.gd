@@ -15,7 +15,6 @@ func perseguir_jugador() -> void:
 		var distanciaSeguentLloc = seguentLloc.length()
 		if distanciaSeguentLloc < 3:
 			cami.remove(0)
-			print ("perseguir va")
 			if not cami:
 				return
 			direccio = seguentLloc

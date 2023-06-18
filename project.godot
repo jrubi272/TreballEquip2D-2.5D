@@ -75,7 +75,7 @@ _global_script_class_icons={
 [application]
 
 config/name="TreballEquip_Manuel_Lara_Jaume_Rubí"
-run/main_scene="res://Scenes/Joc.tscn"
+run/main_scene="res://Scenes/Inici.tscn"
 config/icon="res://icon.png"
 
 [display]

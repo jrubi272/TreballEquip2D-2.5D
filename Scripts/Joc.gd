@@ -166,7 +166,7 @@ func _on_SpawnEnemics_timeout():
 		$SpawnEnemics.start()
 		
 func posValida(coordenada:Vector2, posJugador):
-	if coordenada.x - posJugador.x < 10 or coordenada.y - posJugador.y < 10:
+	if coordenada.x - posJugador.x < 20 or coordenada.y - posJugador.y < 20:
 		return false
 	elif not escenari.transitable(coordenada):
 		return false
