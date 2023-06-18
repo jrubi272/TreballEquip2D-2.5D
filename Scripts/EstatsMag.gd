@@ -4,6 +4,7 @@ class_name EstatsMag extends Estats
 func _init():
 	afegir_estat("idle")
 	afegir_estat("caminar")
+	afegir_estat("danyar")
 	afegir_estat("atacar")
 	
 func _ready():
@@ -22,7 +23,7 @@ func transicionar() -> int:
 		estats.caminar:
 			if pare.distanciaJugador < pare.Max_Distancia_Jugador or pare.distanciaJugador > pare.Min_Distancia_Jugador:
 				return estats.idle
-		estats.atacar:
+		estats.danyar:
 			if not anim_player.is_playing():
 				return estats.caminar
 	return -1
@@ -33,6 +34,6 @@ func entrar_estat(estat_anterior: int, nou: int) -> void:
 			anim_player.play("Idle")
 		estats.caminar:
 			anim_player.play("Caminar")
-		estats.atacar:
-			anim_player.play("Atacar")
+		estats.danyar:
+			anim_player.play("Danyar")
 	

@@ -40,10 +40,12 @@ func actualitzar_vides(nVides, direccio):
 		pass #gestionar cuando muere
 
 func rebre_dany(dany: int, dir: Vector2, forca: int) -> void:
-	vides -= dany
-	estats_pers.colocar_estat(estats_pers.estats.danyar) 
-	velocitat += dir * forca
-
+	if estats_pers.estat != estats_pers.estats.danyar:
+		vides -= dany
+		if vides > 0: 
+			#estats_pers.colocar_estats(estats_pers.estats.danyar)
+			velocitat += dir * forca
+			
 func set_pos_inicial(pos:Vector2):
 	position = pos
 	_posInicial = pos

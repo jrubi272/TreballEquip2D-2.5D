@@ -1,15 +1,13 @@
 class_name Enemic extends Personatge
 
-var jugador: KinematicBody2D
-var timer: Timer
-var localitzacio: Navigation2D
-var cami: PoolVector2Array
+onready var jugador: KinematicBody2D = get_tree().current_scene.get_node("P_Jugador")
+onready var timer: Timer = get_node("Timer")
+onready var localitzacio: Navigation2D = get_tree().current_scene.get_node("Navigation2D")
+var cami: PoolVector2Array 
 
 
 func _ready():
-	jugador = get_tree().current_scene.get_node("P_Jugador")
-	timer = get_node("Timer")
-	localitzacio = get_tree().current_scene.get_node("Navigation2D")
+	var aux = connect("tree_exited", get_parent(), "enemic_matat")
 
 func perseguir_jugador() -> void:
 	if cami:
@@ -17,13 +15,14 @@ func perseguir_jugador() -> void:
 		var distanciaSeguentLloc = seguentLloc.length()
 		if distanciaSeguentLloc < 3:
 			cami.remove(0)
+			print ("perseguir va")
 			if not cami:
 				return
 			direccio = seguentLloc
-			if seguentLloc.x > 0 and anim_sprite.flip_h:
-				anim_sprite.flip_h = false
-			elif seguentLloc.x < 0 and not anim_sprite.flip_h:
-				anim_sprite.flip_h = true
+		if seguentLloc.x > 0 and anim_sprite.flip_h:
+			anim_sprite.flip_h = false
+		elif seguentLloc.x < 0 and not anim_sprite.flip_h:
+			anim_sprite.flip_h = true
 
 
 func _on_Timer_timeout():
