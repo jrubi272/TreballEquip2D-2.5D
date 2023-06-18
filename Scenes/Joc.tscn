@@ -21,4 +21,5 @@ autostart = true
 
 [node name="SpawnEnemics" type="Timer" parent="."]
 
+[connection signal="mort" from="P_Jugador" to="." method="_on_P_Jugador_mort"]
 [connection signal="timeout" from="SpawnEnemics" to="." method="_on_SpawnEnemics_timeout"]

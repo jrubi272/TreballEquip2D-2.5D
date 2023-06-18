@@ -10,6 +10,9 @@ const NIV1:= preload("res://Scenes/Escenari.tscn")
 const NIV2:= preload("res://Scenes/Escenari2.tscn")
 const NIV3:= preload("res://Scenes/Escenari3.tscn")
 const NIV4:= preload("res://Scenes/Escenari4.tscn")
+const MENU:= preload("res://Scenes/Menu.tscn")
+
+var intent = 0
 
 onready var navi = get_node("Navigation2D")
 
@@ -21,10 +24,6 @@ var enemics_inicials = 2
 var enemics_per_ronda = 5
 var temps_spawn_enemics = 5
 var escenari
-var esc_xMax 
-var esc_xMin
-var esc_yMax
-var esc_yMin
 var lvl : int = 1
 var rand = RandomNumberGenerator.new()
 
@@ -51,10 +50,6 @@ func _ready():
 	var nivell1 = NIV1.instance()
 	navi.add_child(nivell1, true)
 	escenari = nivell1
-	esc_xMax = 530
-	esc_xMin = -100
-	esc_yMax = 340
-	esc_yMin = 25
 	$HUD.actualitzar_vida(-1)
 	iniciar_enemics()
 
@@ -71,10 +66,11 @@ func canviar_nivell2():
 	$P_Jugador/Camera2D.limit_right = 508
 	$P_Jugador/Camera2D.limit_top = 0
 	escenari = nivell2
-	esc_xMax = 500
-	esc_xMin = -50
-	esc_yMax = 320
-	esc_yMin = 30
+	enemics_inicials = 3
+	enemics_per_ronda = 8
+	temps_spawn_enemics = 4
+	iniciar_enemics()
+
 
 func canviar_nivell3():
 	
@@ -89,10 +85,10 @@ func canviar_nivell3():
 	$P_Jugador/Camera2D.limit_right = 485
 	$P_Jugador/Camera2D.limit_top = 0
 	escenari = nivell3
-	esc_xMax = 385
-	esc_xMin = -30
-	esc_yMax = 290
-	esc_yMin = 50
+	enemics_inicials = 4
+	enemics_per_ronda = 12
+	temps_spawn_enemics = 3
+	iniciar_enemics()
 
 func canviar_nivell4():
 	
@@ -107,10 +103,10 @@ func canviar_nivell4():
 	$P_Jugador/Camera2D.limit_right = 452
 	$P_Jugador/Camera2D.limit_top = 0
 	escenari = nivell4
-	esc_xMax = 450
-	esc_xMin = -50
-	esc_yMax = 360
-	esc_yMin = 0
+	enemics_inicials = 5
+	enemics_per_ronda = 20
+	temps_spawn_enemics = 3
+	iniciar_enemics()
 
 func mesVelJug():
 	$P_Jugador/Estats.max_vel_jug += 30
@@ -149,12 +145,13 @@ func colocar_enemic(tipus:String):
 	self.add_child(enemic, true)
 	var valid:= false
 	while not valid:
-		var randX = rand.randi_range(-100, 520)
-		var randY = rand.randi_range(20, 330)
+		var randX = rand.randi_range(0, 500)
+		var randY = rand.randi_range(0, 300)
 		var coordenada = Vector2(randX,randY)
 		if posValida(coordenada, $P_Jugador.position):
 			valid = true
 			enemic.position = coordenada
+			enemic.connect("mort", self, "on_enemic_mort")
 
 func _on_SpawnEnemics_timeout():
 	if enemics_en_joc < enemics_per_ronda:
@@ -166,9 +163,30 @@ func _on_SpawnEnemics_timeout():
 		$SpawnEnemics.start()
 		
 func posValida(coordenada:Vector2, posJugador):
-	if coordenada.x - posJugador.x < 20 or coordenada.y - posJugador.y < 20:
-		return false
-	elif not escenari.transitable(coordenada):
+	if coordenada.x - posJugador.x < 20 or coordenada.y - posJugador.y < 20 or not escenari.transitable(coordenada):
 		return false
 	else:
 		return true
+		
+func _on_enemic_mort():
+	enemics_en_joc -= 1
+	if enemics_en_joc == 0:
+		gestio_nivells()
+
+
+func _on_P_Jugador_mort():
+	for k in _Ogres:
+		var enemic = _Ogres.pop_back()
+		enemic.queue_free()
+	for j in _Mags:
+		var enemic = _Mags.pop_back()
+		enemic.queue_free()
+	navi.get_child(0).queue_free()
+	var menu = MENU.instance()
+	navi.add_child(menu, true)
+	menu.connect("reintentar",self, "_on_Menu_reintentar()")
+
+
+func _on_Menu_reintentar():
+	navi.get_child(0).queue_free()
+	_ready()

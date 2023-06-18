@@ -1,6 +1,8 @@
 class_name Personatge extends KinematicBody2D
 
 
+signal mort
+
 #constants
 const FRICTION: float = 0.15
 
@@ -44,6 +46,9 @@ func rebre_dany(dany: int, dir: Vector2, forca: int) -> void:
 		if vides > 0: 
 			#estats_pers.colocar_estats(estats_pers.estats.danyar)
 			velocitat += dir * forca
+		elif vides == 0:
+			#emit_signal("mort")
+			pass
 			
 func set_pos_inicial(pos:Vector2):
 	position = pos

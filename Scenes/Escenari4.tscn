@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=2]
+[gd_scene load_steps=145 format=2]
 
 [ext_resource path="res://textures/TX Tileset Grass.png" type="Texture" id=1]
 [ext_resource path="res://textures/TX Struct.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://textures/TX - PlayerDavant.png" type="Texture" id=4]
 [ext_resource path="res://textures/TX Tileset Wall.png" type="Texture" id=5]
 [ext_resource path="res://textures/TX Props.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Escenari.gd" type="Script" id=7]
 
 [sub_resource type="NavigationPolygon" id=85]
 vertices = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -3155,6 +3156,7 @@ points = PoolVector2Array( 12, 28.625, 19.875, 28.5, 20, 32, 12.0625, 32 )
 
 [node name="Escenari4" type="Node2D"]
 scale = Vector2( 0.75, 0.75 )
+script = ExtResource( 7 )
 
 [node name="DecoHerba" type="TileMap" parent="."]
 tile_set = SubResource( 154 )
