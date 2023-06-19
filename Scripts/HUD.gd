@@ -21,7 +21,6 @@ func actualitzar_vida(nVides):
 
 
 func _on_mesVida_pressed():
-	actualitzar_vida(1)
 	emit_signal("buffElegit")
 	emit_signal("mesVida")
 

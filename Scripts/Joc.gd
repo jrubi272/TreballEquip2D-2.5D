@@ -237,9 +237,10 @@ func pujarRonda():
 
 
 func mesVida():
-	vides += 1
+	$P_Jugador.vides += 1
 	$HUD.actualitzar_vida(1)
 
 
 func _on_P_Jugador_danyat():
+	$P_Jugador.vides -= 1
 	$HUD.actualitzar_vida(-1)
