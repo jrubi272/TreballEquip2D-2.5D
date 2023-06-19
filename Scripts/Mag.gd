@@ -34,5 +34,3 @@ func disparar():
 	proj.ini(global_position, (jugador.position - global_position).normalized())
 	get_tree().current_scene.add_child(proj)
 
-func _on_TimerAtac_timeout():
-	potAtacar = true
