@@ -86,7 +86,7 @@ resource_name = "Caminar"
 length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -102,7 +102,7 @@ tracks/0/keys = {
 resource_name = "Danyar"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -119,16 +119,16 @@ resource_name = "Idle"
 length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 8, 9, 10, 11, 12 ]
+"values": [ 9, 11 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -144,6 +144,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 9 ]
 }
 
 [sub_resource type="RectangleShape2D" id=25]

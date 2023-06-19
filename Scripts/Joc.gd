@@ -134,7 +134,7 @@ func gestio_nivells():
 	treureEnems = 0
 	if temps_spawn_enemics > 0.5:
 		temps_spawn_enemics -= 0.5
-	
+
 	if lvl == 1:
 		canviar_nivell1()
 	elif lvl == 2:
