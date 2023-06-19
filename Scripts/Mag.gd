@@ -11,7 +11,7 @@ var distanciaJugador
 
 func _on_TimerCami_timeout():
 	if is_instance_valid(jugador):
-		distanciaJugador = (jugador.position - global_position).length()
+		distanciaJugador = jugador.position - position
 		if distanciaJugador > Max_Distancia_Jugador:
 			obtenirCamiJugador()
 		elif distanciaJugador < Min_Distancia_Jugador:
