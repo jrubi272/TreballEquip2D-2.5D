@@ -2,7 +2,7 @@ class_name Estats extends Node
 
 var estats: Dictionary = {}
 var estat_anterior: int = -1
-var estat: int = -1 setget colocar_estat
+var estat: int = -1 setget colocar_estat #cada cop que es canvia el valor de estat es crida colocar_estat
 
 onready var pare: Personatge = get_parent()
 onready var anim_player: AnimationPlayer = pare.get_node("AnimationPlayer")

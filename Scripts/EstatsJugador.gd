@@ -14,7 +14,7 @@ func _ready() -> void:
 
 
 func comportament_estats(_delta: float) -> void:
-	if estat == estats.Idle or estat == estats.Move:
+	if estat == estats.Idle or estat == estats.Move: #si no esta executant danyar o mort
 		pare.get_input()
 		pare.moure(max_vel_jug)
 
@@ -26,6 +26,7 @@ func entrar_estat(_previous_state: int, nou: int) -> void:
 			anim_player.play("Move")
 		estats.danyar:
 			anim_player.play("Hurt")
+			emit_signal("danyat")
 		estats.mort:
 			anim_player.play("Dead")
 

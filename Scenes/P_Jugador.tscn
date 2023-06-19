@@ -436,7 +436,6 @@ shape = SubResource( 17 )
 
 [node name="AnimatedSprite" parent="." index="2"]
 visible = false
-scale = Vector2( 1, 1 )
 frames = SubResource( 32 )
 animation = "Idle"
 
