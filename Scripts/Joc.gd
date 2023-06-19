@@ -55,6 +55,21 @@ func _ready():
 	escenari = nivell1
 	$HUD.actualitzar_vida(-1)
 	iniciar_enemics()
+	
+
+func canviar_nivell1():
+	$P_Jugador.potMoure = true
+	$P_Jugador.potMoureEspasa = true
+	navi.get_child(0).queue_free()
+	var nivell1 = NIV1.instance()
+	navi.call_deferred("add_child", nivell1)
+	$P_Jugador.set_global_position(nivell1.get_node("puntInici").position)
+	$P_Jugador/Camera2D.limit_bottom = 342
+	$P_Jugador/Camera2D.limit_left = -102
+	$P_Jugador/Camera2D.limit_right = 532
+	$P_Jugador/Camera2D.limit_top = -22
+	escenari = nivell1
+	iniciar_enemics()
 
 func canviar_nivell2():
 	
@@ -69,10 +84,6 @@ func canviar_nivell2():
 	$P_Jugador/Camera2D.limit_right = 508
 	$P_Jugador/Camera2D.limit_top = 0
 	escenari = nivell2
-	enemics_inicials = 3
-	enemics_per_ronda = 9 - treureEnems
-	temps_spawn_enemics = 4
-	treureEnems = 0
 	iniciar_enemics()
 
 
@@ -89,10 +100,6 @@ func canviar_nivell3():
 	$P_Jugador/Camera2D.limit_right = 485
 	$P_Jugador/Camera2D.limit_top = 0
 	escenari = nivell3
-	enemics_inicials = 4
-	enemics_per_ronda = 14 - treureEnems
-	temps_spawn_enemics = 3
-	treureEnems = 0
 	iniciar_enemics()
 
 func canviar_nivell4():
@@ -108,40 +115,42 @@ func canviar_nivell4():
 	$P_Jugador/Camera2D.limit_right = 452
 	$P_Jugador/Camera2D.limit_top = 0
 	escenari = nivell4
-	enemics_inicials = 5
-	enemics_per_ronda = 20 - treureEnems
-	temps_spawn_enemics = 3
-	treureEnems = 0
 	iniciar_enemics()
 
 func mesVelJug():
 	$P_Jugador/Estats.max_vel_jug += 30
 	vel += 1
 
-func _on_prova_timeout():
-	pass
 
 func gestio_nivells():
-	lvl += 1
-	pujarRonda()
-	$HUD/Vel.set_text("Vel +" + str(vel))
-	$HUD/Vides.set_text("Vides +" + str(vides))
-	$HUD/Enems.set_text("Enems -" + str(enems))
-	$HUD/Millores.visible = false
-	enemics_eliminats = 0
-	if lvl == 2:
-		canviar_nivell2()
-	elif lvl == 3:
-		canviar_nivell3()
-	elif lvl == 4:
-		canviar_nivell4()
+	 lvl += 1
+    pujarRonda()
+    $HUD/Vel.set_text("Vel +" + str(vel))
+    $HUD/Vides.set_text("Vides +" + str(vides))
+    $HUD/Enems.set_text("Enems -" + str(enems))
+    $HUD/Millores.visible = false
+    enemics_inicials += 2
+    enemics_per_ronda += 4 - treureEnems
+    treureEnems = 0
+    if temps_spawn_enemics > 0.5:
+        temps_spawn_enemics -= 0.5
+
+    if lvl == 1:
+        canviar_nivell1()
+    elif lvl == 2:
+        canviar_nivell2()
+    elif lvl == 3:
+        canviar_nivell3()
+    elif lvl == 4:
+        lvl = 1
+        canviar_nivell4()
 
 func iniciar_enemics(): 
 	while enemics_en_joc <= enemics_inicials:
-		if enemics_en_joc % 2 == 0:
-			colocar_enemic("ogre")
-		else:
-			colocar_enemic("mag")
+		#if enemics_en_joc % 2 == 0:
+		colocar_enemic("ogre")
+		#else:
+		#	colocar_enemic("mag")
 		enemics_en_joc += 1
 
 func colocar_enemic(tipus:String): 
@@ -149,14 +158,14 @@ func colocar_enemic(tipus:String):
 	if tipus == "ogre":
 		enemic = OGRE.instance()
 		_Ogres.append(enemic)
-	else:
-		enemic = MAG.instance()
-		_Mags.append(enemic)
+	#else:
+		#enemic = MAG.instance()
+		#_Mags.append(enemic)
 	self.add_child(enemic, true)
 	var valid:= false
 	while not valid:
-		var randX = rand.randf_range($P_Jugador/Camera2D.limit_left, $P_Jugador/Camera2D.limit_right)
-		var randY = rand.randf_range($P_Jugador/Camera2D.limit_top, $P_Jugador/Camera2D.limit_bottom)
+		var randX = rand.randf_range(-1000, 500)
+		var randY = rand.randf_range(50, 300)
 		var coordenada = Vector2(randX,randY)
 		if posValida(coordenada, $P_Jugador.position):
 			valid = true
@@ -166,15 +175,15 @@ func colocar_enemic(tipus:String):
 
 func _on_SpawnEnemics_timeout():
 	if enemics_en_joc < enemics_per_ronda:
-		if enemics_en_joc % 2 == 0:
-			colocar_enemic("ogre")
-		else:
-			colocar_enemic("ogre")
+		colocar_enemic("ogre")
+		#else:
+			#colocar_enemic("mag")
+
 		enemics_en_joc += 1
 		$SpawnEnemics.start()
 		
 func posValida(coordenada:Vector2, posJugador):
-	if coordenada.x - posJugador.x < 20 or coordenada.y - posJugador.y < 20 or not escenari.transitable(coordenada):
+	if coordenada.x - posJugador.x < 30 or coordenada.y - posJugador.y < 30 or not escenari.transitable(coordenada):
 		return false
 	else:
 		return true
@@ -218,24 +227,10 @@ func pujarRonda():
 	$HUD/ronda.set_text("RONDA: " + str(ronda))
 
 
-func _on_prova2_timeout():
-	$HUD/Millores.visible = true
-	$P_Jugador.potMoure = false
-	$P_Jugador.potMoureEspasa = false
-	$prova3.start()
-
-
-func _on_prova3_timeout():
-	$HUD/Millores.visible = true
-	$P_Jugador.potMoure = false
-	$P_Jugador.potMoureEspasa = false
-
-
 func mesVida():
 	vides += 1
+	$HUD.actualitzar_vida(1)
 
 
-
-func actualitzar_cami(PuntA, PuntB):
-	return $Navigation2D.get_simple_path(PuntA, PuntB, false)
-
+func _on_P_Jugador_danyat():
+	$HUD.actualitzar_vida(-1)

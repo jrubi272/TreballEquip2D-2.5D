@@ -14,24 +14,11 @@ script = ExtResource( 3 )
 [node name="P_Jugador" parent="." instance=ExtResource( 5 )]
 position = Vector2( 432, 108 )
 
-[node name="prova" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-autostart = true
-
 [node name="SpawnEnemics" type="Timer" parent="."]
-
-[node name="prova2" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-
-[node name="prova3" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
 
 [connection signal="augmentarVel" from="HUD" to="." method="mesVelJug"]
 [connection signal="buffElegit" from="HUD" to="." method="gestio_nivells"]
 [connection signal="menysEnems" from="HUD" to="." method="menysEnemicsRonda"]
-[connection signal="mesVida" from="HUD" to="." method="mesVida"]
+[connection signal="danyat" from="P_Jugador" to="." method="_on_P_Jugador_danyat"]
 [connection signal="mort" from="P_Jugador" to="." method="_on_P_Jugador_mort"]
 [connection signal="timeout" from="SpawnEnemics" to="." method="_on_SpawnEnemics_timeout"]
