@@ -33,7 +33,4 @@ one_shot = true
 [connection signal="buffElegit" from="HUD" to="." method="gestio_nivells"]
 [connection signal="menysEnems" from="HUD" to="." method="menysEnemicsRonda"]
 [connection signal="mort" from="P_Jugador" to="." method="_on_P_Jugador_mort"]
-[connection signal="timeout" from="prova" to="." method="_on_prova_timeout"]
 [connection signal="timeout" from="SpawnEnemics" to="." method="_on_SpawnEnemics_timeout"]
-[connection signal="timeout" from="prova2" to="." method="_on_prova2_timeout"]
-[connection signal="timeout" from="prova3" to="." method="_on_prova3_timeout"]

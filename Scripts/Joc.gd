@@ -119,10 +119,7 @@ func mesVelJug():
 	$P_Jugador/Estats.max_vel_jug += 30
 
 func _on_prova_timeout():
-	$HUD/Millores.visible = true
-	$P_Jugador.potMoure = false
-	$P_Jugador.potMoureEspasa = false
-	$prova2.start()
+	pass
 
 func gestio_nivells():
 	lvl += 1
@@ -154,13 +151,14 @@ func colocar_enemic(tipus:String):
 	self.add_child(enemic, true)
 	var valid:= false
 	while not valid:
-		var randX = rand.randi_range(0, 500)
-		var randY = rand.randi_range(0, 300)
+		var randX = rand.randf_range($P_Jugador/Camera2D.limit_left, $P_Jugador/Camera2D.limit_right)
+		var randY = rand.randf_range($P_Jugador/Camera2D.limit_top, $P_Jugador/Camera2D.limit_bottom)
 		var coordenada = Vector2(randX,randY)
 		if posValida(coordenada, $P_Jugador.position):
 			valid = true
 			enemic.position = coordenada
-			enemic.connect("mort", self, "on_enemic_mort")
+			enemic.connect("mort", self, "_on_enemic_mort")
+			print (coordenada)
 
 func _on_SpawnEnemics_timeout():
 	if enemics_en_joc < enemics_per_ronda:
@@ -182,9 +180,7 @@ func _on_enemic_mort():
 	enemics_eliminats += 1
 	$HUD/enems.set_text("ENEMICS ELIMINATS: " + str(enemics_eliminats))
 	print("enemic mort")
-	#if enemics_en_joc == 0:
-		#gestio_nivells()
-	if enemics_eliminats == 1:
+	if enemics_en_joc == 0:
 		$HUD/Millores.visible = true
 		$P_Jugador.potMoure = false
 		$P_Jugador.potMoureEspasa = false
@@ -210,6 +206,7 @@ func _on_Menu_reintentar():
 
 func menysEnemicsRonda():
 	treureEnems == 2
+	
 
 func pujarRonda():
 	ronda += 1

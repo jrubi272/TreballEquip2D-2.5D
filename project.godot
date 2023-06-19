@@ -44,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Mag.gd"
 }, {
-"base": "Enemic",
+"base": "KinematicBody2D",
 "class": "Ogre",
 "language": "GDScript",
 "path": "res://Scripts/Ogre.gd"

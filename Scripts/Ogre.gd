@@ -1,6 +1,6 @@
-class_name Ogre extends Enemic
+class_name Ogre extends KinematicBody2D
 
-onready var hitbox: Area2D = get_node("Hitbox")
+onready var jugador: KinematicBody2D = get_node("Hitbox")
 
 
 func _process(delta):

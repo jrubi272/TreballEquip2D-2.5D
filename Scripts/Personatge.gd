@@ -45,10 +45,12 @@ func rebre_dany(dany: int, dir: Vector2, forca: int) -> void:
 		if vides > 0: 
 			estats_pers.colocar_estat(estats_pers.estats.danyar)
 			velocitat += dir * forca
+			print ("danyat")
 		elif vides == 0:
 			estats_pers.colocar_estat(estats_pers.estats.mort)
 			velocitat += direccio * forca * 2
 			emit_signal("mort")
+			print ("mort")
 
 func set_pos_inicial(pos:Vector2):
 	position = pos
