@@ -1,6 +1,7 @@
 class_name Personatge extends KinematicBody2D
 
 signal mort
+signal danyat
 
 #constants
 const FRICTION: float = 0.15
@@ -31,16 +32,11 @@ func moure(max_veloc: int):
 		velocitat += direccio * accel #aplicam el moviment al personatge
 		velocitat = velocitat.clamped(max_veloc) #per a limitar la velocitat del personatge
  
-#func actualitzar_vides(nVides, direccio):
-	#vides += nVides
-	#if nVides > 0:
-	#	pass #gestionar cuando todavia vive
-	#else:
-	#	pass #gestionar cuando muere
 
 func rebre_dany(dany: int, dir: Vector2, forca: int) -> void:
 	if estats_pers.estat != estats_pers.estats.danyar:
 		vides -= dany
+		emit_signal("danyat")
 		if vides > 0: 
 			estats_pers.colocar_estat(estats_pers.estats.danyar)
 			velocitat += dir * forca

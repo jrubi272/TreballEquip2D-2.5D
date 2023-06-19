@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://textures/Enemics/Wizzart_C.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Enemic.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/EstatsMag.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Mag.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Hitbox.gd" type="Script" id=5]
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
@@ -145,6 +146,9 @@ tracks/0/keys = {
 "values": [ 8 ]
 }
 
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 8.5, 10.5 )
+
 [node name="Mag" instance=ExtResource( 2 )]
 script = ExtResource( 4 )
 
@@ -164,20 +168,16 @@ shape = SubResource( 2 )
 [node name="Timer" parent="." index="3"]
 wait_time = 0.2
 
-[node name="TimerAtac" type="Timer" parent="." index="4"]
-wait_time = 1.5
-autostart = true
-
-[node name="AnimationPlayer" parent="." index="5"]
+[node name="AnimationPlayer" parent="." index="4"]
 autoplay = "Idle"
 anims/Caminar = SubResource( 6 )
 anims/Danyar = SubResource( 7 )
 anims/Idle = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 
-[node name="AnimAtacar" type="Timer" parent="." index="6"]
+[node name="Hitbox" type="Area2D" parent="." index="5"]
+script = ExtResource( 5 )
 
-[node name="RayCast2D" type="RayCast2D" parent="." index="7"]
-enabled = true
-
-[connection signal="timeout" from="TimerAtac" to="." method="_on_TimerAtac_timeout"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0.5, -1.5 )
+shape = SubResource( 25 )
