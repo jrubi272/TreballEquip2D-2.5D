@@ -24,6 +24,7 @@ var enemics_inicials = 2
 var enemics_per_ronda = 5
 var temps_spawn_enemics = 5
 var enemics_eliminats = 0
+var enemics_restants = 5
 var treureEnems = 0
 var escenari
 var lvl : int = 1
@@ -42,9 +43,6 @@ func _ready():
 	$SpawnEnemics.wait_time = temps_spawn_enemics
 	$SpawnEnemics.start()
 	$HUD/Millores.visible = false
-	$HUD.connect("augmentarVel", self, "mesVelJug")
-	$HUD.connect("menysEnems", self, "menysEnemicsRonda")
-	$HUD.connect("buffElegit", self, "gestio_nivells")
 	#gestions pel primer nivell
 	$P_Jugador/Camera2D.limit_bottom = 342
 	$P_Jugador/Camera2D.limit_left = -102
@@ -53,7 +51,8 @@ func _ready():
 	var nivell1 = NIV1.instance()
 	navi.add_child(nivell1, true)
 	escenari = nivell1
-	$HUD.actualitzar_vida(-1)
+	enemics_restants = enemics_per_ronda
+	$HUD/restants.set_text("ENEMICS RESTANTS RONDA: " + str(enemics_restants))
 	iniciar_enemics()
 	
 
@@ -69,6 +68,8 @@ func canviar_nivell1():
 	$P_Jugador/Camera2D.limit_right = 532
 	$P_Jugador/Camera2D.limit_top = -22
 	escenari = nivell1
+	enemics_restants = enemics_per_ronda
+	$HUD/restants.set_text("ENEMICS RESTANTS RONDA: " + str(enemics_restants))
 	iniciar_enemics()
 
 func canviar_nivell2():
@@ -84,6 +85,8 @@ func canviar_nivell2():
 	$P_Jugador/Camera2D.limit_right = 508
 	$P_Jugador/Camera2D.limit_top = 0
 	escenari = nivell2
+	enemics_restants = enemics_per_ronda
+	$HUD/restants.set_text("ENEMICS RESTANTS RONDA: " + str(enemics_restants))
 	iniciar_enemics()
 
 
@@ -100,6 +103,8 @@ func canviar_nivell3():
 	$P_Jugador/Camera2D.limit_right = 485
 	$P_Jugador/Camera2D.limit_top = 0
 	escenari = nivell3
+	enemics_restants = enemics_per_ronda
+	$HUD/restants.set_text("ENEMICS RESTANTS RONDA: " + str(enemics_restants))
 	iniciar_enemics()
 
 func canviar_nivell4():
@@ -115,6 +120,8 @@ func canviar_nivell4():
 	$P_Jugador/Camera2D.limit_right = 452
 	$P_Jugador/Camera2D.limit_top = 0
 	escenari = nivell4
+	enemics_restants = enemics_per_ronda
+	$HUD/restants.set_text("ENEMICS RESTANTS RONDA: " + str(enemics_restants))
 	iniciar_enemics()
 
 func mesVelJug():
@@ -190,7 +197,9 @@ func posValida(coordenada:Vector2, posJugador):
 func _on_enemic_mort():
 	enemics_en_joc -= 1
 	enemics_eliminats += 1
+	enemics_restants -= 1
 	$HUD/enems.set_text("ENEMICS ELIMINATS: " + str(enemics_eliminats))
+	$HUD/restants.set_text("ENEMICS RESTANTS RONDA: " + str(enemics_restants))
 	print("enemic mort")
 	if enemics_en_joc == 0:
 		$HUD/Millores.visible = true
@@ -217,7 +226,7 @@ func _on_Menu_reintentar():
 
 
 func menysEnemicsRonda():
-	treureEnems == 2
+	treureEnems = 2
 	enems += 2
 
 

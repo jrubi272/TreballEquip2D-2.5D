@@ -30,7 +30,7 @@ func moure(max_veloc: int):
 		if max_veloc > 100: #per la gestio de l'augment de velocitat al P_Jugador, ja que nomes l'afecta a ell
 			velocitat += direccio * 1.6
 		velocitat += direccio * accel #aplicam el moviment al personatge
-		velocitat = velocitat.clamped(max_veloc) #per a limitar la velocitat del personatge
+		velocitat = velocitat.limit_length(max_veloc)#per a limitar la velocitat del personatge
  
 
 func rebre_dany(dany: int, dir: Vector2, forca: int) -> void:

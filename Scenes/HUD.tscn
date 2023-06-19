@@ -78,9 +78,21 @@ margin_left = 172.0
 margin_top = 4.0
 margin_right = 378.0
 margin_bottom = 28.0
-rect_scale = Vector2( 0.691764, 0.691764 )
+rect_scale = Vector2( 0.621206, 0.621206 )
+custom_colors/font_color = Color( 0.819608, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "ENEMICS ELIMINATS: 0"
+align = 1
+
+[node name="restants" type="Label" parent="."]
+margin_left = 160.0
+margin_top = 18.0
+margin_right = 412.0
+margin_bottom = 42.0
+rect_scale = Vector2( 0.621206, 0.621206 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "ENEMICS RESTANTS RONDA:"
 align = 1
 
 [node name="ronda" type="Label" parent="."]

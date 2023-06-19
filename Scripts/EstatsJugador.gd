@@ -1,6 +1,7 @@
 extends Estats
 
 export var max_vel_jug = 100
+signal danyat
 
 func _init() -> void:
 	afegir_estat("Idle")
