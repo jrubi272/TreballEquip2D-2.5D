@@ -5,8 +5,7 @@ signal mort
 signal augmentarVel
 signal buffElegit
 signal menysEnems
-
-var parent = get_parent()
+signal mesVida
 
 func _ready():
 	$BarraVida.value = 100
@@ -24,6 +23,7 @@ func actualitzar_vida(nVides):
 func _on_mesVida_pressed():
 	actualitzar_vida(1)
 	emit_signal("buffElegit")
+	emit_signal("mesVida")
 
 func _on_mesVel_pressed():
 	emit_signal("augmentarVel")

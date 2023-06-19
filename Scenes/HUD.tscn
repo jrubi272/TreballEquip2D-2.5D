@@ -93,6 +93,36 @@ custom_fonts/font = SubResource( 4 )
 text = "RONDA: 1"
 align = 1
 
+[node name="Vel" type="Label" parent="."]
+margin_left = 4.0
+margin_top = 21.0
+margin_right = 214.0
+margin_bottom = 45.0
+rect_scale = Vector2( 0.546598, 0.546598 )
+custom_colors/font_color = Color( 0.576471, 0.835294, 0.933333, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Vel +0"
+
+[node name="Vides" type="Label" parent="."]
+margin_left = 4.0
+margin_top = 34.0
+margin_right = 214.0
+margin_bottom = 58.0
+rect_scale = Vector2( 0.546598, 0.546598 )
+custom_colors/font_color = Color( 0.988235, 0.164706, 0.164706, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Vides +0"
+
+[node name="Enems" type="Label" parent="."]
+margin_left = 4.0
+margin_top = 47.0
+margin_right = 214.0
+margin_bottom = 71.0
+rect_scale = Vector2( 0.546598, 0.546598 )
+custom_colors/font_color = Color( 0.945098, 0.678431, 0.298039, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Enems -0"
+
 [connection signal="pressed" from="Millores/mesVida" to="." method="_on_mesVida_pressed"]
 [connection signal="pressed" from="Millores/mesVel" to="." method="_on_mesVel_pressed"]
 [connection signal="pressed" from="Millores/menysEnems" to="." method="_on_menysEnems_pressed"]

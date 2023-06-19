@@ -32,5 +32,6 @@ one_shot = true
 [connection signal="augmentarVel" from="HUD" to="." method="mesVelJug"]
 [connection signal="buffElegit" from="HUD" to="." method="gestio_nivells"]
 [connection signal="menysEnems" from="HUD" to="." method="menysEnemicsRonda"]
+[connection signal="mesVida" from="HUD" to="." method="mesVida"]
 [connection signal="mort" from="P_Jugador" to="." method="_on_P_Jugador_mort"]
 [connection signal="timeout" from="SpawnEnemics" to="." method="_on_SpawnEnemics_timeout"]

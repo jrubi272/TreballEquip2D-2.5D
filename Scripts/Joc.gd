@@ -28,15 +28,14 @@ var treureEnems = 0
 var escenari
 var lvl : int = 1
 var rand = RandomNumberGenerator.new()
+
 var ronda = 1
+var enems = 0
+var vel = 0
+var vides = 0
 
 func _init() -> void:
 	randomize()
-	
-	var screen_size: Vector2 = OS.get_screen_size()
-	var window_size: Vector2 = OS.get_window_size()
-	
-	OS.set_window_position(screen_size * 0.5 - window_size * 0.5)
 
 func _ready():
 	rand.randomize()
@@ -117,6 +116,7 @@ func canviar_nivell4():
 
 func mesVelJug():
 	$P_Jugador/Estats.max_vel_jug += 30
+	vel += 1
 
 func _on_prova_timeout():
 	pass
@@ -124,6 +124,9 @@ func _on_prova_timeout():
 func gestio_nivells():
 	lvl += 1
 	pujarRonda()
+	$HUD/Vel.set_text("Vel +" + str(vel))
+	$HUD/Vides.set_text("Vides +" + str(vides))
+	$HUD/Enems.set_text("Enems -" + str(enems))
 	$HUD/Millores.visible = false
 	if lvl == 2:
 		canviar_nivell2()
@@ -206,7 +209,8 @@ func _on_Menu_reintentar():
 
 func menysEnemicsRonda():
 	treureEnems == 2
-	
+	enems += 2
+
 
 func pujarRonda():
 	ronda += 1
@@ -225,5 +229,12 @@ func _on_prova3_timeout():
 	$P_Jugador.potMoure = false
 	$P_Jugador.potMoureEspasa = false
 
+
+func mesVida():
+	vides += 1
+
+
+
 func actualitzar_cami(PuntA, PuntB):
 	return $Navigation2D.get_simple_path(PuntA, PuntB, false)
+
