@@ -123,27 +123,27 @@ func mesVelJug():
 
 
 func gestio_nivells():
-	 lvl += 1
-    pujarRonda()
-    $HUD/Vel.set_text("Vel +" + str(vel))
-    $HUD/Vides.set_text("Vides +" + str(vides))
-    $HUD/Enems.set_text("Enems -" + str(enems))
-    $HUD/Millores.visible = false
-    enemics_inicials += 2
-    enemics_per_ronda += 4 - treureEnems
-    treureEnems = 0
-    if temps_spawn_enemics > 0.5:
-        temps_spawn_enemics -= 0.5
+	lvl += 1
+	pujarRonda()
+	$HUD/Vel.set_text("Vel +" + str(vel))
+	$HUD/Vides.set_text("Vides +" + str(vides))
+	$HUD/Enems.set_text("Enems -" + str(enems))
+	$HUD/Millores.visible = false
+	enemics_inicials += 2
+	enemics_per_ronda += 4 - treureEnems
+	treureEnems = 0
+	if temps_spawn_enemics > 0.5:
+		temps_spawn_enemics -= 0.5
 
-    if lvl == 1:
-        canviar_nivell1()
-    elif lvl == 2:
-        canviar_nivell2()
-    elif lvl == 3:
-        canviar_nivell3()
-    elif lvl == 4:
-        lvl = 1
-        canviar_nivell4()
+	if lvl == 1:
+		canviar_nivell1()
+	elif lvl == 2:
+		canviar_nivell2()
+	elif lvl == 3:
+		canviar_nivell3()
+	elif lvl == 4:
+		lvl = 1
+		canviar_nivell4()
 
 func iniciar_enemics(): 
 	while enemics_en_joc <= enemics_inicials:
