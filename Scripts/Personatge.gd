@@ -15,6 +15,7 @@ export(int) var vides = 2
 var direccio: Vector2 = Vector2.ZERO #inicialitzat a coordenades (0,0)
 var velocitat: Vector2 = Vector2.ZERO
 var potMoure: bool = true
+var cami
 
 onready var anim_sprite: AnimatedSprite = get_node("AnimatedSprite")
 onready var estats_pers: Node = get_node("Estats")

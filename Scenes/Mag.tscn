@@ -178,3 +178,9 @@ script = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0.5, -1.5 )
 shape = SubResource( 25 )
+
+[node name="RayCast2D" type="RayCast2D" parent="." index="5"]
+
+[node name="TimerCami" type="Timer" parent="." index="6"]
+
+[connection signal="timeout" from="TimerCami" to="." method="_on_TimerCami_timeout"]
