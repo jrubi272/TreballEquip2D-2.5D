@@ -1,8 +1,6 @@
 class_name Enemic extends Personatge
 
 onready var jugador: KinematicBody2D = get_tree().current_scene.get_node("P_Jugador")
-onready var timer: Timer = get_node("Timer")
-onready var localitzacio: Navigation2D = get_tree().current_scene.get_node("Navigation2D")
 
 func perseguir_jugador() -> void:
 	var seguentDireccio: Vector2 = position.direction_to(jugador.position)
