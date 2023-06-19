@@ -5,7 +5,6 @@ func _init():
 	afegir_estat("idle")
 	afegir_estat("caminar")
 	afegir_estat("danyar")
-	afegir_estat("atacar")
 	
 func _ready():
 	colocar_estat(estats.caminar)
