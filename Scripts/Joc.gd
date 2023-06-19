@@ -138,7 +138,7 @@ func gestio_nivells():
 	$HUD/Enems.set_text("Enems -" + str(enems))
 	$HUD/Millores.visible = false
 	enemics_inicials += 2
-	enemics_per_ronda += 4 - treureEnems
+	enemics_per_ronda += 4 - treureEnems#si s'ha elegit la millora de menys enemics
 	treureEnems = 0
 	if temps_spawn_enemics > 0.5:
 		temps_spawn_enemics -= 0.5
@@ -198,10 +198,9 @@ func posValida(coordenada:Vector2, posJugador):
 func _on_enemic_mort():
 	enemics_en_joc -= 1
 	enemics_eliminats += 1
-	enemics_restants -= 1
+	#enemics_restants -= 1
 	$HUD/enems.set_text("ENEMICS ELIMINATS: " + str(enemics_eliminats))
 	#$HUD/restants.set_text("ENEMICS RESTANTS RONDA: " + str(enemics_restants))
-	print("enemic mort")
 	if enemics_en_joc == 0:
 		$HUD/Millores.visible = true
 		$P_Jugador.potMoure = false
