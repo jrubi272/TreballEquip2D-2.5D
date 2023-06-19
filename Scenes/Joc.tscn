@@ -10,6 +10,8 @@ script = ExtResource( 3 )
 [node name="HUD" parent="." instance=ExtResource( 6 )]
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
+cell_size = 32.0
+edge_connection_margin = 16.0
 
 [node name="P_Jugador" parent="." instance=ExtResource( 5 )]
 position = Vector2( 432, 108 )
