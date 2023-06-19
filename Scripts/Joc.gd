@@ -123,27 +123,27 @@ func mesVelJug():
 
 
 func gestio_nivells():
-	 lvl += 1
-    pujarRonda()
-    $HUD/Vel.set_text("Vel +" + str(vel))
-    $HUD/Vides.set_text("Vides +" + str(vides))
-    $HUD/Enems.set_text("Enems -" + str(enems))
-    $HUD/Millores.visible = false
-    enemics_inicials += 2
-    enemics_per_ronda += 4 - treureEnems
-    treureEnems = 0
-    if temps_spawn_enemics > 0.5:
-        temps_spawn_enemics -= 0.5
-
-    if lvl == 1:
-        canviar_nivell1()
-    elif lvl == 2:
-        canviar_nivell2()
-    elif lvl == 3:
-        canviar_nivell3()
-    elif lvl == 4:
-        lvl = 1
-        canviar_nivell4()
+	lvl += 1
+	pujarRonda()
+	$HUD/Vel.set_text("Vel +" + str(vel))
+	$HUD/Vides.set_text("Vides +" + str(vides))
+	$HUD/Enems.set_text("Enems -" + str(enems))
+	$HUD/Millores.visible = false
+	enemics_inicials += 2
+	enemics_per_ronda += 4 - treureEnems
+	treureEnems = 0
+	if temps_spawn_enemics > 0.5:
+		temps_spawn_enemics -= 0.5
+	
+	if lvl == 1:
+		canviar_nivell1()
+	elif lvl == 2:
+		canviar_nivell2()
+	elif lvl == 3:
+		canviar_nivell3()
+	elif lvl == 4:
+		lvl = 1
+		canviar_nivell4()
 
 func iniciar_enemics(): 
 	while enemics_en_joc <= enemics_inicials:
@@ -178,7 +178,6 @@ func _on_SpawnEnemics_timeout():
 		colocar_enemic("ogre")
 		#else:
 			#colocar_enemic("mag")
-
 		enemics_en_joc += 1
 		$SpawnEnemics.start()
 		
@@ -193,7 +192,7 @@ func _on_enemic_mort():
 	enemics_eliminats += 1
 	$HUD/enems.set_text("ENEMICS ELIMINATS: " + str(enemics_eliminats))
 	print("enemic mort")
-	if enemics_eliminats == enemics_per_ronda:
+	if enemics_en_joc == 0:
 		$HUD/Millores.visible = true
 		$P_Jugador.potMoure = false
 		$P_Jugador.potMoureEspasa = false
