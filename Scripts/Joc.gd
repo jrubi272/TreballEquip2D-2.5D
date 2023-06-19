@@ -128,6 +128,7 @@ func gestio_nivells():
 	$HUD/Vides.set_text("Vides +" + str(vides))
 	$HUD/Enems.set_text("Enems -" + str(enems))
 	$HUD/Millores.visible = false
+	enemics_eliminats = 0
 	if lvl == 2:
 		canviar_nivell2()
 	elif lvl == 3:
@@ -168,7 +169,7 @@ func _on_SpawnEnemics_timeout():
 		if enemics_en_joc % 2 == 0:
 			colocar_enemic("ogre")
 		else:
-			colocar_enemic("mag")
+			colocar_enemic("ogre")
 		enemics_en_joc += 1
 		$SpawnEnemics.start()
 		
@@ -183,7 +184,7 @@ func _on_enemic_mort():
 	enemics_eliminats += 1
 	$HUD/enems.set_text("ENEMICS ELIMINATS: " + str(enemics_eliminats))
 	print("enemic mort")
-	if enemics_en_joc == 0:
+	if enemics_eliminats == enemics_per_ronda:
 		$HUD/Millores.visible = true
 		$P_Jugador.potMoure = false
 		$P_Jugador.potMoureEspasa = false
