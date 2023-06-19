@@ -224,3 +224,6 @@ func _on_prova3_timeout():
 	$HUD/Millores.visible = true
 	$P_Jugador.potMoure = false
 	$P_Jugador.potMoureEspasa = false
+
+func actualitzar_cami(PuntA, PuntB):
+	return $Navigation2D.get_simple_path(PuntA, PuntB, false)

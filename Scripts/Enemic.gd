@@ -1,6 +1,6 @@
 class_name Enemic extends Personatge
 
-onready var jugador: KinematicBody2D = get_tree().current_scene.get_node(P_Jugador)
+onready var jugador: KinematicBody2D = get_tree().current_scene.get_node("P_Jugador")
 onready var timer: Timer = get_node("Timer")
 onready var localitzacio: Navigation2D = get_tree().current_scene.get_node("Navigation2D")
 var cami: PoolVector2Array 
@@ -11,13 +11,7 @@ func _ready():
 
 func perseguir_jugador() -> void:
 	if cami:
-		var seguentDireccio: Vector2 = cami[0] - global_position
-		var distanciaSeguentDireccio: float = seguentDireccio.length()
-		cami.remove(0)
-		if not cami:
-			return
-		if seguentDireccio != direccio:
-			print("Seguent direccio" + str(seguentDireccio))
+		var seguentDireccio: Vector2 = position.direction_to(jugador.position)
 		direccio = seguentDireccio
 		if seguentDireccio.x > 0 and anim_sprite.flip_h:
 			anim_sprite.flip_h = false
