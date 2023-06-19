@@ -5,10 +5,6 @@ onready var timer: Timer = get_node("Timer")
 onready var localitzacio: Navigation2D = get_tree().current_scene.get_node("Navigation2D")
 var cami: PoolVector2Array 
 
-
-func _ready():
-	var aux = connect("tree_exited", get_parent(), "enemic_matat")
-
 func perseguir_jugador() -> void:
 	if cami:
 		var seguentDireccio: Vector2 = position.direction_to(jugador.position)
