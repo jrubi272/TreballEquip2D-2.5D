@@ -20,7 +20,7 @@ onready var anim_sprite: AnimatedSprite = get_node("AnimatedSprite")
 onready var estats_pers: Node = get_node("Estats")
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocitat = move_and_slide(velocitat)
 	velocitat = lerp(velocitat, Vector2.ZERO, FRICTION)#per a disminuir gradualment la velocitat del personatge
 
